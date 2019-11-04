@@ -24,7 +24,6 @@ export default class Renders {
                 let RenderClass = Renders.getClass(name)
                 let render = new RenderClass(objects, elem)
                 render.init()
-                render.render()
                 return render
             }
         }

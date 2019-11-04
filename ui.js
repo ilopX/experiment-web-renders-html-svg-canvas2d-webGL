@@ -14,6 +14,7 @@ let ui = {
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
     controller.createRender(ui.renderType.value, ui.container)
+    controller.rendering()
 }
 
 ui.renderType.onchange = () => {
@@ -33,10 +34,12 @@ Object.keys(Renders.listOfRenders).forEach((val) => {
     renderType.appendChild(opt)
 })
 
-controller.initObjectData({
+controller.init({
     width: () => ui.container.clientWidth,
     height: () => ui.container.clientHeight
 })
 
+controller.onPlayEvent((start)=> btnPlay.innerText = start ? 'Pause' : 'Play')
+controller.onFrameRender(() => controller.rendering())
 
 

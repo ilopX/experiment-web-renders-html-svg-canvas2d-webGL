@@ -1,5 +1,7 @@
 import ObjectData from './ObjectData.js'
 import Renders from './render/Renders.js'
+import Animators from './animator/Animators.js'
+import Animator from './animator/Animator.js'
 
 let objects = null
 let render = null
@@ -31,7 +33,14 @@ let controller = {
 
     play() {
         animator.isPlay = !animator.isPlay
-
     },
+
+    onPlayEvent(callback) {
+        animator.onPlayEvent = callback
+    },
+
+    onFrameRender(callback) {
+        animator.onFrame = callback
+    }
 }
 export default controller
