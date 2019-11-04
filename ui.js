@@ -1,5 +1,5 @@
 import controller from './controller.js'
-
+import Renders from './render/Renders.js'
 // ui
 let ui = {
     length: document.getElementById('length'),
@@ -27,6 +27,7 @@ ui.btnRender.onclick = () => {
 btnPlay.onclick = () => {
     controller.play()
 }
+
 
 
 

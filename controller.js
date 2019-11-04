@@ -1,3 +1,4 @@
+import ObjectData from './ObjectData.js'
 import ui from './ui.js'
 
 const sizeInterface = {
