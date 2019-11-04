@@ -3,14 +3,15 @@ import Renders from './render/Renders.js'
 
 let objects = null
 let render = null
+let animator = null
 
 let controller = {
     init(containerSize) {
         objects = new ObjectData(containerSize)
+        animator = new Animator(objects, Animators.get('RandomAlgorithm'))
     },
 
     createObjects(len) {
-
         objects.create(len)
     },
 
@@ -29,6 +30,7 @@ let controller = {
     },
 
     play() {
+        animator.isPlay = !animator.isPlay
 
     },
 }
