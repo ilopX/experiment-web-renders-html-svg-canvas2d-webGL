@@ -1,6 +1,6 @@
 import controller from './controller.js'
 import Renders from './render/Renders.js'
-// ui
+
 let ui = {
     length: document.getElementById('length'),
     container: document.getElementById('container'),
@@ -10,15 +10,14 @@ let ui = {
     btnClear: document.getElementById('btnClear'),
     btnRender: document.getElementById('btnRender')
 }
-export default ui
 
 ui.btnCreate.onclick = () => {
-    controller.createObjects()
-    controller.createRender()
+    controller.createObjects(ui.length.value)
+    controller.createRender(ui.renderType.value, ui.container)
 }
 
 ui.renderType.onchange = () => {
-    controller.createRender()
+    controller.createRender(ui.renderType.value,  ui.container)
 } 
 ui.btnRender.onclick = () => {
     controller.rendering()
