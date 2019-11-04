@@ -1,0 +1,23 @@
+body {
+    margin: auto;
+    width: 600px;
+    padding-top: 20px;
+}
+
+#container {
+    background-color: #C4C4C4;
+    height: 600px;
+    width: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+#container > div{
+    background-color: red;
+    position: fixed;
+    position: absolute;
+}
+
+.form {
+    margin-top: 20px;
+}
