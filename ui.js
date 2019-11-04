@@ -1,3 +1,6 @@
+import controller from './controller.js'
+
+// ui
 let ui = {
     length: document.getElementById('length'),
     container: document.getElementById('container'),
@@ -10,20 +13,20 @@ let ui = {
 export default ui
 
 ui.btnCreate.onclick = () => {
-
+    controller.createObjects()
+    controller.createRender()
 }
 
 ui.renderType.onchange = () => {
-
+    controller.createRender()
 } 
 ui.btnRender.onclick = () => {
-
+    controller.rendering()
 }
 
 btnPlay.onclick = () => {
-
+    controller.play()
 }
-
 
 
 
