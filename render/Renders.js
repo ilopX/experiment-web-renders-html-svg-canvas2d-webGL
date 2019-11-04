@@ -1,11 +1,13 @@
 import RenderInterface from './RenderInterface.js'
 import HTMLRender from './HTMLRender.js'
 import SVGRender from './SVGRender.js'
+import Canvas2dRender from './Canvas2dRender.js'
 
 export default class Renders {
     static listOfRenders = {
         'HTML Render': HTMLRender,
         'SVG Render': SVGRender,
+        'Canvas 2d Render': Canvas2dRender,
         'Other engine': RenderInterface
     }
 
