@@ -5,7 +5,7 @@ let objects = null
 let render = null
 
 let controller = {
-    initObjectData(containerSize) {
+    init(containerSize) {
         objects = new ObjectData(containerSize)
     },
 
