@@ -2,16 +2,7 @@ import ObjectData from './ObjectData.js'
 import ui from './ui.js'
 import Renders from './render/Renders.js'
 
-const sizeInterface = {
-    get width() {
-        return ui.container.clientWidth
-    },
-    get height() {
-        return ui.container.clientHeight
-    }
-}
-
-let objects = new ObjectData(sizeInterface)
+let objects = null
 let render = null
 
 let controller = {

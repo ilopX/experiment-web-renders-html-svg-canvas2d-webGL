@@ -34,7 +34,10 @@ Object.keys(Renders.listOfRenders).forEach((val) => {
     renderType.appendChild(opt)
 })
 
-
+controller.initObjectData({
+    width: () => ui.container.clientWidth,
+    height: () => ui.container.clientHeight
+})
 
 
 

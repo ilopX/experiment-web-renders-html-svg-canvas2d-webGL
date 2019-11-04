@@ -3,10 +3,9 @@ import RenderInterface from './RenderInterface.js'
 export default class Canvas2dRender extends RenderInterface {
     init() {
         this.canv = document.createElement('canvas')
-        this.canv.setAttribute('width', this.container.clientWidth)
-        this.canv.setAttribute('height', this.container.clientHeight)
+        this.canv.setAttribute('width', this.containerSize.width())
+        this.canv.setAttribute('height', this.containerSize.height())
         this.container.appendChild(this.canv)
-        
     }
 
     render() {

@@ -3,8 +3,8 @@ import RenderInterface from './RenderInterface.js'
 export default class SVGRender extends RenderInterface {
     init() {
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        svg.setAttribute('width', this.container.clientWidth)
-        svg.setAttribute('height', this.container.clientHeight)
+        svg.setAttribute('width', this.containerSize.width())
+        svg.setAttribute('height', this.containerSize.height())
         svg.setAttribute('version', '1.1')
         this.svg = svg
         this.container.appendChild(svg)

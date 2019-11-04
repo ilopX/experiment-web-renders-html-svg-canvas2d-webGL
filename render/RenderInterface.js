@@ -5,6 +5,10 @@ export default  class RenderInterface {
         // this.init()
     }
     
+    get containerSize() {
+        return this.objects.containerSize
+    }
+
     init() {
         throw new TypeError('not impl');
     }
