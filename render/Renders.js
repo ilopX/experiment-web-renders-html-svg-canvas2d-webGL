@@ -1,8 +1,8 @@
 import RenderInterface from './RenderInterface.js'
-
+import HTMLRender from './HTMLRender.js'
 export default class Renders {
     static listOfRenders = {
-
+        'HTML Render': HTMLRender,
         'Other engine': RenderInterface
     }
 

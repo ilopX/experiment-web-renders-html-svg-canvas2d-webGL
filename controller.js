@@ -1,5 +1,6 @@
 import ObjectData from './ObjectData.js'
 import ui from './ui.js'
+import Renders from './render/Renders.js'
 
 const sizeInterface = {
     get width() {

@@ -1,4 +1,5 @@
 import controller from './controller.js'
+import Renders from './render/Renders.js'
 // ui
 let ui = {
     length: document.getElementById('length'),
@@ -27,7 +28,11 @@ btnPlay.onclick = () => {
     controller.play()
 }
 
-
+Object.keys(Renders.listOfRenders).forEach((val) => {
+    let opt = document.createElement('option')
+    opt.innerText = val
+    renderType.appendChild(opt)
+})
 
 
 
