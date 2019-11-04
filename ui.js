@@ -28,9 +28,9 @@ btnPlay.onclick = () => {
     controller.play()
 }
 
-Object.keys(Renders.listOfRenders).forEach((val) => {
+controller.rendersForEach( (name) => {
     let opt = document.createElement('option')
-    opt.innerText = val
+    opt.innerText = name
     renderType.appendChild(opt)
 })
 

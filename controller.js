@@ -35,6 +35,10 @@ let controller = {
         animator.isPlay = !animator.isPlay
     },
 
+    rendersForEach(callback) {
+        Object.keys(Renders.listOfRenders).forEach(callback)
+    },
+
     onPlayEvent(callback) {
         animator.onPlayEvent = callback
     },
