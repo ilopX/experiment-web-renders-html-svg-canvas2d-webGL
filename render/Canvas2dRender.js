@@ -3,9 +3,9 @@ import RenderInterface from './RenderInterface.js'
 export default class Canvas2dRender extends RenderInterface {
     init() {
         this.canv = document.createElement('canvas')
-        this.canv.setAttribute('width', this.containerSize.width())
-        this.canv.setAttribute('height', this.containerSize.height())
-        this.container.appendChild(this.canv)
+        this.canv.setAttribute('width', this.container.width)
+        this.canv.setAttribute('height', this.container.height)
+        this.container.element.appendChild(this.canv)
     }
 
     render() {
@@ -13,7 +13,7 @@ export default class Canvas2dRender extends RenderInterface {
         ctx.clearRect(0, 0, this.canv.width, this.canv.height)
         // ctx.translate(-0.5, 0.5)
         ctx.imageSmoothingEnabled = false;
-        this.objects.get.forEach(obj => {
+        this.objects.forEach(obj => {
             ctx.fillStyle = obj.color
             ctx.fillRect(obj.x, 
                     obj.y, 
@@ -23,6 +23,6 @@ export default class Canvas2dRender extends RenderInterface {
     }
 
     dispose() {
-        this.container.removeChild(this.canv)
+        this.container.element.removeChild(this.canv)
     }
 }

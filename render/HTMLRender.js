@@ -2,18 +2,18 @@ import RenderInterface from './RenderInterface.js'
 
 export default  class HTMLRender extends RenderInterface {
     init() {
-        this.objects.get.forEach(obj => {
+        this.objects.forEach(obj => {
             let box = document.createElement('div')
             let st = box.style
             st.backgroundColor = 'red'
-            this.container.appendChild(box)
+            this.container.element.appendChild(box)
             obj.HTMLRender = box
         });
 
     }
 
     render() {
-        this.objects.get.forEach(obj => {
+        this.objects.forEach(obj => {
             let box = obj.HTMLRender
             let st = box.style
             st.left = `${obj.x}px`
@@ -25,10 +25,10 @@ export default  class HTMLRender extends RenderInterface {
     }
 
     dispose() {
-        this.objects.get.forEach(obj => {
+        this.objects.forEach(obj => {
             delete obj.HTMLRender
         }); 
-        this.container.innerHTML = ''
+        this.container.element.innerHTML = ''
         // clear html elements
     }
 }
