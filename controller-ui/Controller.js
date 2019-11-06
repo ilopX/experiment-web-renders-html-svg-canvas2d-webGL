@@ -65,6 +65,6 @@ export default class Controller {
     }
 
     onFpsUpdate(callback) {
-        this._processor.onFpsUpdate = callback
+        this._processor.onFpsUpdateEvent(callback)
     }
 }
