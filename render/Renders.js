@@ -7,12 +7,11 @@ export default class Renders {
     static listOfRenders = {
         'HTML Render': HTMLRender,
         'SVG Render': SVGRender,
-        'Canvas 2d Render': Canvas2dRender,
-        'Other engine': RenderInterface
+        'Canvas 2d Render': Canvas2dRender
+        //'Other engine': RenderInterface
     }
 
     static getClass(name) {
-        name = name
         return (name in this.listOfRenders) 
             ? this.listOfRenders[name]
             : RenderInterface
