@@ -1,8 +1,8 @@
-import ObjectData from './lib/ObjectData.js'
-import Renders from './render/Renders.js'
-import Animations from './animation/Animations.js'
-import Processor from './lib/Processor.js'
-import Containerable from './lib/Containerable.js'
+import ObjectData from '../lib/ObjectData.js'
+import Renders from '../render/Renders.js'
+import Animations from '../animation/Animations.js'
+import Processor from '../lib/Processor.js'
+import Containerable from '../lib/Containerable.js'
 
 export default class Controller {
     constructor(container) {
