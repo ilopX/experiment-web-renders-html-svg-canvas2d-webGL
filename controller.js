@@ -1,50 +1,70 @@
-import ObjectData from './ObjectData.js'
+import ObjectData from './lib/ObjectData.js'
 import Renders from './render/Renders.js'
-import Animators from './animator/Animators.js'
-import Animator from './animator/Animator.js'
+import Animations from './animation/Animations.js'
+import Processor from './lib/Processor.js'
+import Containerable from './lib/Containerable.js'
 
-let objects = null
-let render = null
-let animator = null
+export default class Controller {
+    constructor(container) {
+        this._container = new Containerable(container)
+        this._objectData = new ObjectData(this._container)
+        this._render = null
+        this._animation = null
+        this._processor = new Processor()
+        this._processor.onCycleEvent(() => {
+            if (this._animation) {
+                this._animation.animate()
+            }
 
-let controller = {
-    init(containerSize) {
-        objects = new ObjectData(containerSize)
-        animator = new Animator(objects, Animators.get('RandomAlgorithm'))
-    },
+            if (this._render){
+                this._render.render()
+            }
+        })
+    }
+
+    setRender(name) {
+        if (this._render) {
+            this._render.dispose()
+        }
+        this._render = Renders.get(name)
+                        .create(this._objectData, this._container) 
+    }
+
+    setAnimationAlgorithm(name) {
+        // if (this._animation) {
+        //     this._animation.dispose()
+        // }
+        this._animation = Animations.get(name)
+                            .create(this._objectData, this._container) 
+    }
 
     createObjects(len) {
-        objects.create(len)
-    },
-
-    createRender(renderType, container){
-        if (render) {
-            render.dispose()
-        }
-        render = Renders.get(renderType)
-                        .create(objects, container)   
-    },
+        this._objectData.create(len)
+    }
 
     rendering() {
-        if (render) {
-            render.render()
+        if (this._render) {
+            this._render.render()
         }
-    },
+    }
 
     play() {
-        animator.isPlay = !animator.isPlay
-    },
+        this._processor.isStart = !this._processor.isStart
+    }
 
-    rendersForEach(callback) {
+    getRenders(callback) {
         Object.keys(Renders.listOfRenders).forEach(callback)
-    },
+    }
+
+    getAnimations(callback) {
+        Object.keys(Animations.algorithms).forEach(callback)
+    }
 
     onPlayEvent(callback) {
-        animator.onPlayEvent = callback
-    },
+        this._processor.onStartEvent = callback
+    }
 
-    onFrameRender(callback) {
-        animator.onFrame = callback
+    onFpsUpdate(callback) {
+        this._processor.onFpsUpdate = callback
     }
 }
-export default controller
