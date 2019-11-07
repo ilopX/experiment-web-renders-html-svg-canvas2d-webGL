@@ -5,21 +5,27 @@ export default class RandomAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {
         super(objectData, container)
         this._xRandomSize = 4
+        this._yRandomSize = 4
     }
     animate() {
         this.objects.forEach((obj) => {
             obj.x += Math.random() * this._xRandomSize-this._xRandomSize / 2
-            obj.y += Math.random()*4-2
+            obj.y += Math.random()* this._yRandomSize-this._yRandomSize / 2
         })
     }
 
     get properties() {
         return [
             {
-                name: 'xRandomSize',
+                name: 'x range',
                 set:  (size) => this._xRandomSize = size,
                 get: () => this._xRandomSize
             },
+            {
+                name: 'y range',
+                set:  (size) => this._yRandomSize = size,
+                get: () => this._yRandomSize
+            }
         ]
     }
 } 
