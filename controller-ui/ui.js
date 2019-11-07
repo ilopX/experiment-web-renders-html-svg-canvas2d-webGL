@@ -1,5 +1,5 @@
 import Controller from './Controller.js'
-import PropertyUiComponent from '../lib/PeopertyUiComponent.js'
+import PropertyUiComponent from '../lib/PropertyUiComponent.js'
 
 let ui = {
     length: document.getElementById('length'),
@@ -46,7 +46,8 @@ controller.onAnimationChange((animation) => {
     ui.animationProperties.innerHTML = ''
     animation.properties.forEach((prop) => {
         let component = new PropertyUiComponent(prop)
-        ui.animationProperties.appendChild(component.dom)
+        for(let elem of component.elements) {
+            ui.animationProperties.appendChild(elem)}
     })
 })
 
