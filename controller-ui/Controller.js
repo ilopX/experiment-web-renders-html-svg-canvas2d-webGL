@@ -20,6 +20,7 @@ export default class Controller {
                 this._render.render()
             }
         })
+        this._onAnimationChange = null
     }
 
     setRender(name) {
@@ -36,6 +37,9 @@ export default class Controller {
         // }
         this._animation = Animations.get(name)
                             .create(this._objectData, this._container) 
+        if (typeof this._onAnimationChange == 'function') {
+            this._onAnimationChange(this._animation)
+        }
     }
 
     createObjects(len) {
@@ -66,5 +70,9 @@ export default class Controller {
 
     onFpsUpdate(callback) {
         this._processor.onFpsUpdateEvent(callback)
+    }
+
+    onAnimationChange(callback) {
+        this._onAnimationChange = callback
     }
 }
