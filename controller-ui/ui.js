@@ -1,4 +1,5 @@
 import Controller from './Controller.js'
+import PropertyUiComponent from '../lib/PeopertyUiComponent.js'
 
 let ui = {
     length: document.getElementById('length'),
@@ -26,6 +27,11 @@ controller.getAnimations( (name) => {
     animationType.appendChild(opt)
 })
 
+setTimeout(() => {
+    controller.setRender(ui.renderType.value)
+    controller.setAnimationAlgorithm(ui.animationType.value)
+},1)
+
 // controller event
 controller.onPlayEvent((start) => {
     btnPlay.innerText = start 
@@ -39,7 +45,6 @@ controller.onFpsUpdate((fps) => ui.fps.innerText = fps)
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
     controller.setRender(ui.renderType.value)
-    controller.setAnimationAlgorithm(ui.animationType.value)
     controller.rendering()
 }
 
