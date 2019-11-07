@@ -10,7 +10,8 @@ let ui = {
     btnPlay: document.getElementById('btnPlay'),
     btnClear: document.getElementById('btnClear'),
     btnRender: document.getElementById('btnRender'),
-    fps: document.getElementById('fps')
+    fps: document.getElementById('fps'),
+    animationProperties: document.getElementById('animationProperties')
 }
 
 let controller = new Controller(ui.container)
@@ -40,6 +41,14 @@ controller.onPlayEvent((start) => {
 })
 
 controller.onFpsUpdate((fps) => ui.fps.innerText = fps)
+
+controller.onAnimationChange((animation) => {
+    ui.animationProperties.innerHTML = ''
+    animation.properties.forEach((prop) => {
+        let component = new PropertyUiComponent(prop)
+        ui.animationProperties.appendChild(component.dom)
+    })
+})
 
 // form actions
 ui.btnCreate.onclick = () => {
