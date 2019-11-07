@@ -28,10 +28,17 @@ controller.getAnimations( (name) => {
     animationType.appendChild(opt)
 })
 
-setTimeout(() => {
+controller.onReady(() => {
     controller.setRender(ui.renderType.value)
-    controller.setAnimationAlgorithm(ui.animationType.value)
-},1)
+    // controller.setAnimationAlgorithm(ui.animationType.value)
+    controller.createObjects(1000)
+    ui.length.value = 1000
+    controller.setAnimationAlgorithm('Snow')
+    ui.animationType.value = 'Snow'
+    controller.setRender('Canvas 2d Render')
+    ui.renderType.value = 'Canvas 2d Render'
+    controller.play()
+})
 
 // controller event
 controller.onPlayEvent((start) => {
@@ -54,6 +61,7 @@ controller.onAnimationChange((animation) => {
 // form actions
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
+    controller.setAnimationAlgorithm(ui.animationType.value)
     controller.setRender(ui.renderType.value)
     controller.rendering()
 }

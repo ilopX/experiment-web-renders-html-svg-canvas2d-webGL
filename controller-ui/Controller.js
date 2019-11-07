@@ -21,6 +21,12 @@ export default class Controller {
             }
         })
         this._onAnimationChange = null
+
+        setTimeout(() => {
+            if (typeof this._onReady == 'function') {
+                this._onReady()
+            }
+        }, 1)
     }
 
     setRender(name) {
@@ -74,5 +80,9 @@ export default class Controller {
 
     onAnimationChange(callback) {
         this._onAnimationChange = callback
+    }
+
+    onReady(callback) {
+        this._onReady = callback
     }
 }
