@@ -1,11 +1,13 @@
 import AlgorithInreface from './AlgorithmAbstract.js'
 import RandomAlgorithm from './RandomAlgorithm.js'
 import SnowAlgorithm from './SnowAlgorithm.js'
+import BounceAlgorithm from './BounceAlgorithm.js'
 
 export default class Animations {
     static algorithms = {
         'Random': RandomAlgorithm,
-        'Snow': SnowAlgorithm
+        'Snow': SnowAlgorithm,
+        'Bounce': BounceAlgorithm 
     }
 
     static getClass(name) {
