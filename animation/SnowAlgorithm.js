@@ -15,7 +15,7 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
         this._xSpeed = 3
         this._xRange = 10
         this._frameIndex = 0
-    }
+    } 
     animate() {
         this._frameIndex++
         this.objects.forEach((obj) => {

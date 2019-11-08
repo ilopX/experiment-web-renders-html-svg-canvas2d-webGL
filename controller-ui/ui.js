@@ -34,8 +34,8 @@ controller.onReady(() => {
     // controller.setAnimationAlgorithm(ui.animationType.value)
     controller.createObjects(1000)
     ui.length.value = 1000
-    controller.setAnimationAlgorithm('Snow')
-    ui.animationType.value = 'Snow'
+    controller.setAnimationAlgorithm('Bounce')
+    ui.animationType.value = 'Bounce'
     controller.setRender('Canvas 2d Render')
     ui.renderType.value = 'Canvas 2d Render'
     controller.play()
