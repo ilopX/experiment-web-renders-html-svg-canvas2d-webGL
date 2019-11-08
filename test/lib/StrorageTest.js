@@ -14,8 +14,12 @@ describe('StorageTest', function () {
         }
         storage.save(fakeProperty)
         value = 'changedValue'
-        storage.load(fakeProperty)
+
+        let storage2 = new Storage('fakeId', true)
+        storage2.load(fakeProperty)
+        let v = fakeProperty.get()
         equal(fakeProperty.get() == 'beginValue')
+
     })
 
 })
