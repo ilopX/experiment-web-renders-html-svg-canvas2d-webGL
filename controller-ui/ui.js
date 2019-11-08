@@ -1,5 +1,6 @@
 import Controller from './Controller.js'
 import PropertyUiComponent from '../lib/PropertyUiComponent.js'
+import Storage from '../lib/Storage.js'
 
 let ui = {
     length: document.getElementById('length'),
@@ -51,8 +52,10 @@ controller.onFpsUpdate((fps) => ui.fps.innerText = fps)
 
 controller.onAnimationChange((animation) => {
     ui.animationProperties.innerHTML = ''
-    animation.properties.forEach((prop) => {
-        let component = new PropertyUiComponent(prop)
+    let { id, isSaveAll } = animation.properties
+    let storage = new Storage(id, isSaveAll)
+    animation.properties.properties.forEach((prop) => {
+        let component = new PropertyUiComponent(prop, storage)
         for(let elem of component.elements) {
             ui.animationProperties.appendChild(elem)}
     })

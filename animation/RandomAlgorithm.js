@@ -15,7 +15,10 @@ export default class RandomAlgorithm extends AlgorithmAbstract {
     }
 
     get properties() {
-        return [
+        return {
+            id: 'RandomAlgorithm',
+            isSaveAll: true,
+            properties: [
                 {
                     name: 'x range',
                     set: (val) => this._xRandomSize = val,

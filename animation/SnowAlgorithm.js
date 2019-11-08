@@ -32,7 +32,10 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
     }
 
     get properties() {
-        return [
+        return {
+            id: 'SnowAlgorithm',
+            isSaveAll: true,
+            properties: [
                 {
                     name: 'y speed',
                     set:  (size) => this._ySpeed = size,
