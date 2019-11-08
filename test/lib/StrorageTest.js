@@ -1,4 +1,4 @@
-import { Storage } from './../../lib/Storage.js'
+import Storage from './../../lib/Storage.js'
 
 const equal = chai.assert
 
