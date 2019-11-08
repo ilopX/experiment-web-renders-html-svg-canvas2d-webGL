@@ -11,9 +11,9 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
                 xSpeed: Math.random()*0.05
             }
         }) 
-        this._ySpeed = 0
-        this._xSpeed = 0
-        this._xRange = 0
+        this._ySpeed = 12
+        this._xSpeed = 3
+        this._xRange = 10
         this._frameIndex = 0
     }
     animate() {
@@ -33,21 +33,22 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
 
     get properties() {
         return [
-            {
-                name: 'y speed',
-                set:  (size) => this._ySpeed = size,
-                get: () => this._ySpeed
-            },
-            {
-                name: 'x speed',
-                set:  (size) => this._xSpeed = size,
-                get: () => this._xSpeed
-            },
-            {
-                name: 'x range',
-                set:  (size) => this._xRange = size,
-                get: () => this._xRange
-            }
-        ]
+                {
+                    name: 'y speed',
+                    set:  (size) => this._ySpeed = size,
+                    get: () => this._ySpeed
+                },
+                {
+                    name: 'x speed',
+                    set:  (size) => this._xSpeed = size,
+                    get: () => this._xSpeed
+                },
+                {
+                    name: 'x range',
+                    set:  (size) => this._xRange = size,
+                    get: () => this._xRange
+                }
+            ]
+        }
     }
 } 
