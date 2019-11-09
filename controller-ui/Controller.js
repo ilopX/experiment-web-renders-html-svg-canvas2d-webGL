@@ -26,7 +26,7 @@ export default class Controller {
             if (typeof this._onReady == 'function') {
                 this._onReady()
             }
-        }, 1)
+        }, 0)
     }
 
     setRender(name) {
