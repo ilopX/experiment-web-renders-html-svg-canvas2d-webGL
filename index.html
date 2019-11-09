@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div id="container"></div>
     <div class="form">
+        <div id="frameInfo">
+            
+        </div>
         <div>
-            <label for="length">Length:</label>
-            <input id="length" type="number" value="1000"/>
+            <label for="length">Objects:</label>
+            <input id="length" type="number" value="1000" />
+            <button id="btnCreate">Create</button>
         </div>
         <div>
             <label for="renderType">Render Type: </label>
             <select id="renderType"></select>
-            <div>
-                <label for="animationType">Animation Type: </label>
-                <select id="animationType"></select>
-                <label id="fps"></label>
-                <div id="animationProperties"></div>
-            </div>
         </div>
-
-        <div class="button-group">
-            <button id="btnCreate">Create</button>
+        <div>
+            <label for="animationType">Animation Type: </label>
+            <select id="animationType"></select>
             <button id="btnPlay">Play</button>
-            <button id="btnClear">Clear</button>
-            <button id="btnRender">Render</button>
+            <div id="animationProperties"></div>
         </div>
     </div>
     <script type="module" src="controller-ui/ui.js"></script>
 </body>
+
 </html>

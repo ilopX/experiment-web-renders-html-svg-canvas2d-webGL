@@ -21,3 +21,7 @@ body {
 .form {
     margin-top: 20px;
 }
+
+.form > * {
+    padding-top: 20px ;
+}
