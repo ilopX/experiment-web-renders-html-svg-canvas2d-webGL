@@ -11,9 +11,9 @@ export default class Controller {
         this._render = null
         this._animation = null
         this._processor = new Processor()
-        this._processor.onCycleEvent(() => {
+        this._processor.onCycleEvent((multiRate) => {
             if (this._animation) {
-                this._animation.animate()
+                this._animation.animate(multiRate)
             }
 
             if (this._render){

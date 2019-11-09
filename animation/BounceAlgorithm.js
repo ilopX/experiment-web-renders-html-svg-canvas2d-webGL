@@ -17,13 +17,13 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
         this._frameIndex = 0
     }
 
-    animate() {
-        this._frameIndex++
+    animate(rate) {
+
         this.objects.forEach((obj) => {
             let { xSpeed, ySpeed, 
                 xDirection, yDirection } = obj.BounceAlgorithm
             xSpeed += this._xSpeed * 0.1
-            obj.x += xDirection ? xSpeed : -xSpeed
+            obj.x += (xDirection ? xSpeed : -xSpeed) * rate
             let rigth = this.container.width - obj.width
             if (obj.x < 0) {
                 obj.BounceAlgorithm.xDirection = true
@@ -32,8 +32,8 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
                 obj.BounceAlgorithm.xDirection = false
                 obj.x = rigth
             } 
-            ySpeed += this._ySpeed * 0.1
-            obj.y += (yDirection ? ySpeed : -ySpeed) 
+            ySpeed += this._ySpeed * 0.1 
+            obj.y += (yDirection ? ySpeed : -ySpeed) * rate
             let bottom = this.container.height - obj.height
             if (obj.y < 0) {
                 obj.y = 1
