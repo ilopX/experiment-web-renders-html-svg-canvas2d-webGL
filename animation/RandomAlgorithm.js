@@ -4,13 +4,18 @@ import ObjectData from '../lib/ObjectData.js'
 export default class RandomAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {
         super(objectData, container)
-        this._xRandomSize = 4
-        this._yRandomSize = 4
+        this._xRandomSize = 16
+        this._yRandomSize = 16
     }
-    animate() {
+    animate(rate) {
         this.objects.forEach((obj) => {
-            obj.x += Math.random() * this._xRandomSize - this._xRandomSize / 2
-            obj.y += Math.random() * this._yRandomSize - this._yRandomSize / 2
+            obj.x += (Math.random() * this._xRandomSize - this._xRandomSize / 2 ) * 0.3 * rate
+            obj.y += (Math.random() * this._yRandomSize - this._yRandomSize / 2) * 0.3 * rate
+
+            if (obj.x < 0 ||
+                obj.x > this.container.width-obj.width) {
+                obj.x = Math.random() * this.container.width
+            } 
         })
     }
 

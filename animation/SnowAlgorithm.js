@@ -11,22 +11,22 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
                 xSpeed: Math.random()*0.05
             }
         }) 
-        this._ySpeed = 12
+        this._ySpeed = 32
         this._xSpeed = 3
-        this._xRange = 10
+        this._xRange = 5
         this._frameIndex = 0
     } 
     animate(rate) {
-        this._frameIndex++
+        this._frameIndex += rate
         this.objects.forEach((obj) => {
             let {ySpeed, xRange, xSpeed} = obj.SnowAlgorithm
 
-            obj.y += ySpeed * this._ySpeed*0.1
+            obj.y += ySpeed * this._ySpeed * rate
             if (obj.y > this.container.height+obj.height ) {
                 obj.y = -obj.height
             }
-            xSpeed = xSpeed * this._xSpeed * 0.2
-            xRange *= this._xRange*0.2
+            xSpeed = xSpeed * this._xSpeed * 0.1
+            xRange *= this._xRange * rate
             obj.x += Math.cos(this._frameIndex * xSpeed) * xRange
         })
     }
