@@ -64,4 +64,10 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
             ]
         }
     }
+
+    dispose() {
+        this.objects.forEach(obj => {
+            delete obj.BounceAlgorithm
+        })
+    }
 } 

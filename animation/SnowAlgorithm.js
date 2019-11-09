@@ -54,4 +54,10 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
             ]
         }
     }
+
+    dispose() {
+        this.objects.forEach(obj => {
+            delete obj.SnowAlgorithm
+        })
+    }
 } 
