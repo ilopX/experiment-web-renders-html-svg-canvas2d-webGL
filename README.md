@@ -7,4 +7,4 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 
 ## TODO:
 - [ ] WebGL render
-- [ ] Fix play/pause - zero frame rate multiplier
+- [*] Fix play/pause - zero frame rate multiplier
