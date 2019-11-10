@@ -5,7 +5,9 @@ export default  class HTMLRender extends RenderInterface {
         this.objects.forEach(obj => {
             let box = document.createElement('div')
             let st = box.style
-            st.backgroundColor = 'red'
+            st.width = `${obj.width}px`
+            st.height = `${obj.height}px`
+            st.backgroundColor = obj.color
             this.container.element.appendChild(box)
             obj.HTMLRender = box
         });
@@ -18,9 +20,9 @@ export default  class HTMLRender extends RenderInterface {
             let st = box.style
             st.left = `${obj.x}px`
             st.top = `${obj.y}px`
-            st.width = `${obj.width}px`
-            st.height = `${obj.height}px`
-            st.backgroundColor = obj.color
+            // st.width = `${obj.width}px`
+            // st.height = `${obj.height}px`
+            // st.backgroundColor = obj.color
         });   
     }
 
