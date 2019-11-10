@@ -1,36 +1,7 @@
 import Controller from './Controller.js'
-import PropertyUiComponent from '../lib/PropertyUiComponent.js'
+import PropertyUiComponent from './PropertyUiComponent.js'
+import TableValues from './TableValues.js'
 import Storage from '../lib/Storage.js'
-
-class TableValues {
-    constructor(parentElement) {
-        this._parentElem = parentElement
-        this._values = {}
-    }
-
-    initNames(...names) {
-        this._parentElem.innerHTML = ''
-        let tableElem = document.createElement('table')
-        for (const name of names) {
-            let tr = document.createElement('tr')
-            let td = document.createElement('td')
-            let tdVal = document.createElement('td')
-            td.innerText = name
-            tr.appendChild(td)
-            tr.appendChild(tdVal)
-            tableElem.appendChild(tr)
-            this._values[name] = tdVal
-        }
-        this._parentElem.appendChild(tableElem)
-    }
-
-    setValues(values) {
-        for (const key of Object.keys(values)) {
-                const val = values[key]
-                this._values[key].innerText = val.toFixed(2)
-        }
-    }
-}
 
 let ui = {
     length: document.getElementById('length'),
@@ -41,29 +12,28 @@ let ui = {
     btnPlay: document.getElementById('btnPlay'),
     frameInfo: document.getElementById('frameInfo'),
     animationProperties: document.getElementById('animationProperties'),
-    frameInfo1: new TableValues(document.getElementById('frameInfo'))
+    frameInfo: new TableValues(document.getElementById('frameInfo'))
 }
 
 let controller = new Controller(ui.container)
 
-controller.getRenders((name) => {
-    let opt = document.createElement('option')
-    opt.innerText = name
-    renderType.appendChild(opt)
-})
-
-controller.getAnimations((name) => {
-    let opt = document.createElement('option')
-    opt.innerText = name
-    animationType.appendChild(opt)
-})
-
 controller.onReady(() => {
-    ui.frameInfo1.initNames('renderTime', 'idleTime', 'fps', 'multiRate')
+    // fill select renders
+    for (const [name] of controller.renders) {
+        let opt = document.createElement('option')
+        opt.innerText = name
+        renderType.appendChild(opt)   
+    }
+    // fill select animation algorithm
+    for (const [name] of controller.animations) {
+        let opt = document.createElement('option')
+        opt.innerText = name
+        animationType.appendChild(opt)    
+    }
 
+    ui.frameInfo.initNames('renderTime', 'idleTime', 'fps', 'multiRate')
     controller.setRender(ui.renderType.value)
-    controller.createObjects(1000)
-    ui.length.value = 1000
+    controller.createObjects(ui.length.value)
     controller.setAnimationAlgorithm('Snow')
     ui.animationType.value = 'Snow'
     controller.setRender('Canvas 2d Render')
@@ -72,17 +42,18 @@ controller.onReady(() => {
 })
 
 // controller event
-controller.onPlayEvent((start) => {
+controller.onPlay((start) => {
     btnPlay.innerText = start
         ? 'Pause'
         : 'Play'
 })
 
 controller.onFpsUpdate((frameInfo) => {
-    ui.frameInfo1.setValues(frameInfo)
+    ui.frameInfo.setValues(frameInfo)
 })
 
 controller.onAnimationChange((animation) => {
+    // create ui elemetns for animation properties
     ui.animationProperties.innerHTML = ''
     let { id, isSaveAll } = animation.properties
     let storage = new Storage(id, isSaveAll)

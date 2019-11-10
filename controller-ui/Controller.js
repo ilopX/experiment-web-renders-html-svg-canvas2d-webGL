@@ -12,13 +12,8 @@ export default class Controller {
         this._animation = null
         this._processor = new Processor()
         this._processor.onCycleEvent((multiRate) => {
-            if (this._animation) {
-                this._animation.animate(multiRate)
-            }
-
-            if (this._render){
-                this._render.render()
-            }
+            this._animation.animate(multiRate)
+            this._render.render()
         })
         this._onAnimationChange = null
 
@@ -62,15 +57,15 @@ export default class Controller {
         this._processor.isStart = !this._processor.isStart
     }
 
-    getRenders(callback) {
-        Object.keys(Renders.listOfRenders).forEach(callback)
+    get renders() {
+        return Object.entries(Renders.listOfRenders)
     }
 
-    getAnimations(callback) {
-        Object.keys(Animations.algorithms).forEach(callback)
+    get animations() {
+        return Object.entries(Animations.algorithms)
     }
 
-    onPlayEvent(callback) {
+    onPlay(callback) {
         this._processor.onStartEvent = callback
     }
 
