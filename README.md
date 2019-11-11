@@ -5,6 +5,9 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 
 ![](https://raw.githubusercontent.com/ilopX/experiment-web-renders-html-svg-canvas2d-webGL/master/preview.gif)
 
+## Class Model
+![class model](https://raw.githubusercontent.com/ilopX/experiment-web-renders-html-svg-canvas2d-webGL/master/classModel.gif)
+
 ## TODO:
 - [ ] WebGL render
 - [*] Fix play/pause - zero frame rate multiplier
