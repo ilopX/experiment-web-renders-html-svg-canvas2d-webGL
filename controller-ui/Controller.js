@@ -5,23 +5,20 @@ import Processor from '../lib/Processor.js'
 import Containerable from '../lib/Containerable.js'
 
 export default class Controller {
-    constructor(container) {
+    constructor(container, config) {
+        this._config = config
         this._container = new Containerable(container)
         this._objectData = new ObjectData(this._container)
         this._render = null
         this._animation = null
-        this._processor = new Processor()
-        this._processor.onCycleEvent((multiRate) => {
-            this._animation.animate(multiRate)
-            this._render.render()
-        })
         this._onAnimationChange = null
-
-        setTimeout(() => {
-            if (typeof this._onReady == 'function') {
-                this._onReady()
-            }
-        }, 0)
+        this._processor = new Processor(config.processor.updateInfo)
+        this._onReady = () => {}
+                this._processor.onCycleEvent((multiRate) => {
+                    this._animation.animate(multiRate)
+                    this._render.render()
+                })
+        setTimeout(() => this._onReady(), 0)
     }
 
     setRender(name) {
@@ -44,7 +41,9 @@ export default class Controller {
     }
 
     createObjects(len) {
-        this._objectData.create(len)
+        this._objectData.create(len, 
+            this._config.newObject.width,
+            this._config.newObject.height)
     }
 
     rendering() {

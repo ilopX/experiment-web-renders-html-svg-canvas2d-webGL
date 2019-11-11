@@ -2,6 +2,7 @@ import Controller from './Controller.js'
 import PropertyUiComponent from './PropertyUiComponent.js'
 import TableValues from './TableValues.js'
 import Storage from '../lib/Storage.js'
+import config from '../config.js'
 
 let ui = {
     length: document.getElementById('length'),
@@ -15,7 +16,7 @@ let ui = {
     frameInfo: new TableValues(document.getElementById('frameInfo'))
 }
 
-let controller = new Controller(ui.container)
+let controller = new Controller(ui.container, config)
 
 controller.onReady(() => {
     // fill select renders
