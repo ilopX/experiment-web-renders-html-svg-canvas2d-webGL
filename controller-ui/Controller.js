@@ -14,10 +14,10 @@ export default class Controller {
         this._onAnimationChange = null
         this._processor = new Processor(config.processor.updateInfo)
         this._onReady = () => {}
-                this._processor.onCycleEvent((multiRate) => {
-                    this._animation.animate(multiRate)
-                    this._render.render()
-                })
+        this._processor.onCycleEvent((multiRate) => {
+            this._animation.animate(multiRate)
+            this._render.render()
+        })
         setTimeout(() => this._onReady(), 0)
     }
 
