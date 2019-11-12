@@ -35,10 +35,10 @@ controller.onReady(() => {
     ui.frameInfo.initNames('renderTime', 'idleTime', 'fps', 'multiRate')
     controller.setRender(ui.renderType.value)
     controller.createObjects(ui.length.value)
-    controller.setAnimationAlgorithm('Snow')
-    ui.animationType.value = 'Snow'
-    controller.setRender('Canvas 2d Render')
-    ui.renderType.value = 'Canvas 2d Render'
+    controller.setAnimationAlgorithm(config.ui.animation)
+    ui.animationType.value = config.ui.animation
+    controller.setRender(config.ui.render)
+    ui.renderType.value = config.ui.render
     controller.play()
 })
 

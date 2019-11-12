@@ -3,11 +3,11 @@ import { NotImplError } from './../lib/errors.js'
 
 export default class AlgotithmAbstract extends Objective{
     animate(rate) {
-        throw new Error('Not impl')        
+        throw new NotImplError()       
     }
 
     get properties() {
-        return []
+        throw new NotImplError()
     }
 
     dispose() {

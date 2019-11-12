@@ -6,5 +6,9 @@ export default {
     },
     processor: {
         updateInfo: 1000 
+    },
+    ui: {
+        render: 'Canvas 2d Render',
+        animation: 'Snow'
     }
 }

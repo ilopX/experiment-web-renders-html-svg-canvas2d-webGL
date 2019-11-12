@@ -2,6 +2,7 @@ import RenderInterface from './RenderInterface.js'
 import HTMLRender from './HTMLRender.js'
 import SVGRender from './SVGRender.js'
 import Canvas2dRender from './Canvas2dRender.js'
+import { RenderNotFound } from '../lib/errors.js'
 
 export default class Renders {
     static listOfRenders = {
@@ -14,13 +15,16 @@ export default class Renders {
     static getClass(name) {
         return (name in this.listOfRenders) 
             ? this.listOfRenders[name]
-            : RenderInterface
+            : null
     }
 
     static get(name) {
         return {
             create(objects, elem) {
                 let RenderClass = Renders.getClass(name)
+                if (!RenderClass) {
+                    throw new RenderNotFound(name, Renders.listOfRenders)
+                }
                 let render = new RenderClass(objects, elem)
                 render.init()
                 return render
