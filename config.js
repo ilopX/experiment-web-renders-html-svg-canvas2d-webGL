@@ -1,14 +1,14 @@
 export default {
     // rand size range
     newObject: {
-        width: 3,
-        height: 3
+        width: 1,
+        height: 1
     },
     processor: {
         updateInfo: 1000 
     },
     ui: {
         render: 'Canvas 2d Render',
-        animation: 'Snow'
+        animation: 'Text'
     }
 }

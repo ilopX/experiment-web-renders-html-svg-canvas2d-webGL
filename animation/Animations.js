@@ -2,13 +2,16 @@ import AlgorithInreface from './AlgorithmAbstract.js'
 import RandomAlgorithm from './RandomAlgorithm.js'
 import SnowAlgorithm from './SnowAlgorithm.js'
 import BounceAlgorithm from './BounceAlgorithm.js'
+import TextAlgorithm from './TextAlgorithm.js'
+
 import { NotImplError, AnimationAlgorithmNotFound } from '../lib/errors.js'
 
 export default class Animations {
     static algorithms = {
         'Random': RandomAlgorithm,
         'Snow': SnowAlgorithm,
-        'Bounce': BounceAlgorithm 
+        'Bounce': BounceAlgorithm, 
+        'Text': TextAlgorithm
     }
 
     static getClass(name) {
