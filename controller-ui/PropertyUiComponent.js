@@ -1,17 +1,19 @@
 export default class PropertyUiComponent {
+
     constructor(prop, storage) {
         this._name = prop.name
         this._prop = prop
         this._storage = storage
         this._elements = []
         this._elements.push(this._makeLabel())
-        this._elements.push(this._makeNumber())
-    }
+        let methodName = typeof prop.get()
+        methodName = '_make' + methodName[0].toUpperCase() + methodName.substr(1)
 
-    get dom() {
-        let div = document.createElement('div') 
-        div.innerText = `${this._name} not impl`
-        return div
+        if (this[methodName]) {
+            this._elements.push(this[methodName]())
+        } else {
+            throw new Error(`Method "${methodName}" not exist.`)
+        }
     }
 
     get elements() {
@@ -25,14 +27,34 @@ export default class PropertyUiComponent {
     }
 
     _makeNumber() {
-        let inputNumber = document.createElement('input')
-        inputNumber.setAttribute('type', 'number')
+        return this._createInput('number')
+    }
+
+    _makeString() {
+        return this._createInput('text')
+    }
+
+    _makeBoolean() {
+        let input = document.createElement('input')
+        input.setAttribute('type', 'checkbox')
         this._storage.load(this._prop)
-        inputNumber.value = this._prop.get()
-        inputNumber.onchange = () => {
-            this._prop.set(inputNumber.value)
+        input.checked = this._prop.get()
+        input.onchange = () => {
+            this._prop.set(input.checked)
             this._storage.save(this._prop, this._storage)
         }
-        return inputNumber
+        return input
+    }
+
+    _createInput(type) {
+        let input = document.createElement('input')
+        input.setAttribute('type', type)
+        this._storage.load(this._prop)
+        input.value = this._prop.get()
+        input.onchange = () => {
+            this._prop.set(input.value)
+            this._storage.save(this._prop, this._storage)
+        }
+        return input
     }
 }

@@ -4,6 +4,7 @@ export default class TextAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {
         super(objectData, container)
         this._textGeometry = new TextGeometry('Hello world', 80, 'Arial')
+        this._showDebug = true
         this._newAppointment()
     }
 
@@ -11,25 +12,19 @@ export default class TextAlgorithm extends AlgorithmAbstract {
         let points = this._textGeometry.points
         this._moveToCenter(points)
         this._shuffle(points)
-        // let i = 0;
-        // this.objects.forEach((obj) => {
-        //     let {x, y} = points[i++]
-        //     obj.TextAlgorithm = {
-        //         xTarget: x,
-        //         yTarget: y
-        //     }
-        //     if (i > points.lenght) {
-        //         i = 0
-        //     }
-        // })
+        if (this._showDebug) {
+            this._createDebug(points)
+        }
         let i = 0;
         this.objects.forEach((obj) => {
-            if (i >= points.length) {
+            let { x, y } = points[i]
+            obj.TextAlgorithm = {
+                xTarget: x,
+                yTarget: y
+            }
+            if (++i >= points.length) {
                 i = 0
             }
-            let { x, y } = points[i++]
-            obj.x = x
-            obj.y = y
         })
     }
 
@@ -42,12 +37,33 @@ export default class TextAlgorithm extends AlgorithmAbstract {
     }
 
     _moveToCenter(points) {
-        let w = (this.container.width - this._textGeometry.width) / 2 
+        let w = (this.container.width - this._textGeometry.width) / 2
         let h = (this.container.height - this._textGeometry.height) / 2
         points.forEach(val => {
             val.x += w
             val.y += h
         })
+    }
+
+    _createDebug(points) {
+        this._removeDebug()
+        if (this._showDebug) {
+            points.forEach((point) => {
+                this.objects.push({
+                    x: point.x,
+                    y: point.y,
+                    height: 1,
+                    width: 1,
+                    color: `red`,
+                    DebugTextGeometry: true
+                    // type: randomType
+                })
+            })
+        }
+    }
+
+    _removeDebug() {
+        this.objectData.remove((obj) => 'DebugTextGeometry' in obj)
     }
 
     animate(rate) {
@@ -71,27 +87,35 @@ export default class TextAlgorithm extends AlgorithmAbstract {
                 // }
                 {
                     name: 'fontSize',
-                    set:  (val) => {
+                    set: (val) => {
                         this._textGeometry.fontSize = val
                         this._newAppointment()
                     },
-                    get: () => this._textGeometry.fontSize 
+                    get: () => this._textGeometry.fontSize
                 },
                 {
                     name: 'text',
-                    set:  (val) =>  {
+                    set: (val) => {
                         this._textGeometry.text = val
                         this._newAppointment()
                     },
-                    get: () => this._textGeometry.text 
+                    get: () => this._textGeometry.text
                 },
                 {
                     name: 'sensetive',
-                    set:  (val) =>  {
+                    set: (val) => {
                         this._textGeometry.sensetive = val
                         this._newAppointment()
                     },
-                    get: () => this._textGeometry.sensetive 
+                    get: () => this._textGeometry.sensetive
+                },
+                {
+                    name: 'show debug',
+                    set: (val) => {
+                        this._showDebug = val
+                        this._createDebug(this._textGeometry.points)
+                    },
+                    get: () => this._showDebug
                 }
 
             ]
@@ -99,6 +123,7 @@ export default class TextAlgorithm extends AlgorithmAbstract {
     }
 
     dispose() {
+        this._removeDebug()
         this.objects.forEach(obj => {
             delete obj.TextAlgorithm
         })
@@ -196,7 +221,7 @@ class TextGeometry {
             this._sensetive = val
             this._update()
         }
-    } 
+    }
 
     // get fontName() {
     //     throw new NotImplError()
