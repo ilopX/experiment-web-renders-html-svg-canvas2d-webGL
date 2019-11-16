@@ -1,8 +1,8 @@
 export default {
     // rand size range
     newObject: {
-        width: 1,
-        height: 1
+        width: 3,
+        height: 3
     },
     processor: {
         updateInfo: 1000 
