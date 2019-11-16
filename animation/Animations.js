@@ -1,31 +1,31 @@
-import AlgorithInreface from './AlgorithmAbstract.js'
-import RandomAlgorithm from './RandomAlgorithm.js'
-import SnowAlgorithm from './SnowAlgorithm.js'
-import BounceAlgorithm from './BounceAlgorithm.js'
-import TextAlgorithm from './TextAlgorithm.js'
+import AlgorithInreface from './AnimationInterface.js'
+import RandomAnimation from './RandomAnimation.js'
+import SnowAnimation from './SnowAnimation.js'
+import BounceAnimation from './BounceAnimation.js'
+import TextAnimation from './TextAnimation/TextAnimation.js'
 
-import { NotImplError, AnimationAlgorithmNotFound } from '../lib/errors.js'
+import { AnimationNotFound } from '../lib/errors.js'
 
 export default class Animations {
-    static algorithms = {
-        'Random': RandomAlgorithm,
-        'Snow': SnowAlgorithm,
-        'Bounce': BounceAlgorithm, 
-        'Text': TextAlgorithm
+    static listOfAnimations = {
+        'Random': RandomAnimation,
+        'Snow': SnowAnimation,
+        'Bounce': BounceAnimation,
+        'Text': TextAnimation
     }
 
     static getClass(name) {
-        return name in this.algorithms
-            ? this.algorithms[name]
+        return name in this.listOfAnimations
+            ? this.listOfAnimations[name]
             : null
     }
-    
+
     static get(name) {
         return {
             create(objectData, containable) {
                 let AnimationClass = Animations.getClass(name)
                 if (!AnimationClass) {
-                    throw new AnimationAlgorithmNotFound(name, Animations.algorithms)
+                    throw new AnimationNotFound(name, Animations.listOfAnimations)
                 }
                 let animation = new AnimationClass(objectData, containable)
                 //render.init()

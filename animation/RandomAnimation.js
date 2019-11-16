@@ -1,4 +1,4 @@
-import AlgorithmAbstract from './AlgorithmAbstract.js'
+import AlgorithmAbstract from './AnimationInterface.js'
 import ObjectData from '../lib/ObjectData.js'
 
 export default class RandomAlgorithm extends AlgorithmAbstract {
@@ -9,13 +9,13 @@ export default class RandomAlgorithm extends AlgorithmAbstract {
     }
     animate(rate) {
         this.objects.forEach((obj) => {
-            obj.x += (Math.random() * this._xRandomSize - this._xRandomSize / 2 ) * 0.3 * rate
+            obj.x += (Math.random() * this._xRandomSize - this._xRandomSize / 2) * 0.3 * rate
             obj.y += (Math.random() * this._yRandomSize - this._yRandomSize / 2) * 0.3 * rate
 
             if (obj.x < 0 ||
-                obj.x > this.container.width-obj.width) {
+                obj.x > this.container.width - obj.width) {
                 obj.x = Math.random() * this.container.width
-            } 
+            }
         })
     }
 

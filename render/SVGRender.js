@@ -24,13 +24,13 @@ export default class SVGRender extends RenderInterface {
             let rect = obj.SVGRenderBox
             rect.setAttribute('x', obj.x)
             rect.setAttribute('y', obj.y)
-        })      
+        })
     }
 
     dispose() {
         this.objects.forEach(obj => {
             delete obj.SVGRenderBox
-        }); 
+        });
         this.container.element.removeChild(this.svg)
     }
 }

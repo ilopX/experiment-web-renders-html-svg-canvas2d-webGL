@@ -5,7 +5,7 @@ export default {
         height: 3
     },
     processor: {
-        updateInfo: 1000 
+        updateInfoTime: 1000
     },
     ui: {
         render: 'Canvas 2d Render',

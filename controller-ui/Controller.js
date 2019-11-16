@@ -3,6 +3,7 @@ import Renders from '../render/Renders.js'
 import Animations from '../animation/Animations.js'
 import Processor from '../lib/Processor.js'
 import Containerable from '../lib/Containerable.js'
+import Event from '../lib/Event.js'
 
 export default class Controller {
     constructor(container, config) {
@@ -11,14 +12,18 @@ export default class Controller {
         this._objectData = new ObjectData(this._container)
         this._render = null
         this._animation = null
-        this._onAnimationChange = null
-        this._processor = new Processor(config.processor.updateInfo)
-        this._onReady = () => {}
-        this._processor.onCycleEvent((multiRate) => {
+        this._onAnimationChangeEvent = () => { }
+        this._onReadyEvent = () => { }
+        setTimeout(() => this._onReadyEvent(), 0)
+        this._createProcessor()
+    }
+
+    _createProcessor() {
+        this._processor = new Processor(this._config.processor.updateInfoTime)
+        this._processor.onCycle((multiRate) => {
             this._animation.animate(multiRate)
             this._render.render()
         })
-        setTimeout(() => this._onReady(), 0)
     }
 
     setRender(name) {
@@ -26,7 +31,7 @@ export default class Controller {
             this._render.dispose()
         }
         this._render = Renders.get(name)
-                        .create(this._objectData, this._container) 
+            .create(this._objectData, this._container)
     }
 
     setAnimationAlgorithm(name) {
@@ -34,14 +39,12 @@ export default class Controller {
             this._animation.dispose()
         }
         this._animation = Animations.get(name)
-                            .create(this._objectData, this._container) 
-        if (typeof this._onAnimationChange == 'function') {
-            this._onAnimationChange(this._animation)
-        }
+            .create(this._objectData, this._container)
+        this._onAnimationChangeEvent(this._animation)
     }
 
     createObjects(len) {
-        this._objectData.create(len, 
+        this._objectData.create(len,
             this._config.newObject.width,
             this._config.newObject.height)
     }
@@ -61,11 +64,11 @@ export default class Controller {
     }
 
     get animations() {
-        return Object.entries(Animations.algorithms)
+        return Object.entries(Animations.listOfAnimations)
     }
 
-    onPlay(callback) {
-        this._processor.onStartEvent = callback
+    onStartPause(callback) {
+        this._processor.onStart(callback)
     }
 
     onFpsUpdate(callback) {
@@ -73,10 +76,10 @@ export default class Controller {
     }
 
     onAnimationChange(callback) {
-        this._onAnimationChange = callback
+        this._onAnimationChangeEvent = Event.check(callback)
     }
 
     onReady(callback) {
-        this._onReady = callback
+        this._onReadyEvent = Event.check(callback)
     }
 }

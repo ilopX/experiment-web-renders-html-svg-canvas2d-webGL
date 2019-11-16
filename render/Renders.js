@@ -13,7 +13,7 @@ export default class Renders {
     }
 
     static getClass(name) {
-        return (name in this.listOfRenders) 
+        return (name in this.listOfRenders)
             ? this.listOfRenders[name]
             : null
     }

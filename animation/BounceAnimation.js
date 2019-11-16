@@ -1,4 +1,4 @@
-import AlgorithmAbstract from './AlgorithmAbstract.js'
+import AlgorithmAbstract from './AnimationInterface.js'
 
 export default class BounceAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {
@@ -20,7 +20,7 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
     animate(rate) {
 
         this.objects.forEach((obj) => {
-            let { xSpeed, ySpeed, 
+            let { xSpeed, ySpeed,
                 xDirection, yDirection } = obj.BounceAlgorithm
             xSpeed += this._xSpeed * 0.1
             obj.x += (xDirection ? xSpeed : -xSpeed) * rate
@@ -31,8 +31,8 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
             } else if (obj.x > rigth) {
                 obj.BounceAlgorithm.xDirection = false
                 obj.x = rigth
-            } 
-            ySpeed += this._ySpeed * 0.1 
+            }
+            ySpeed += this._ySpeed * 0.1
             obj.y += (yDirection ? ySpeed : -ySpeed) * rate
             let bottom = this.container.height - obj.height
             if (obj.y < 0) {
@@ -52,12 +52,12 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
             properties: [
                 {
                     name: 'x speed',
-                    set:  (val) => this._xSpeed = val,
+                    set: (val) => this._xSpeed = val,
                     get: () => this._xSpeed
                 },
                 {
                     name: 'y speed',
-                    set:  (val) => this._ySpeed = val,
+                    set: (val) => this._ySpeed = val,
                     get: () => this._ySpeed
                 }
 

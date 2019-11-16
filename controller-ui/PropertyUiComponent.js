@@ -5,20 +5,34 @@ export default class PropertyUiComponent {
         this._prop = prop
         this._storage = storage
         this._elements = []
-        this._elements.push(this._makeLabel())
-        let methodName = 'type' in prop 
-            ? prop.type
-            : prop.get().constructor.name
-        methodName = '_make' + methodName[0].toUpperCase() + methodName.substr(1)
-        if (this[methodName]) {
-            this._elements.push(this[methodName]())
-        } else {
-            throw new Error(`Method "${methodName}" not exist.`)
-        }
+        this._createComponent()
     }
 
     get elements() {
         return this._elements
+    }
+
+    _createComponent() {
+        let label = this._makeLabel()
+        let component = this._makeComponent()
+        this._elements.push(label, component)
+    }
+
+    _makeComponent() {
+        // get component type
+        let prop = this._prop
+        let type = 'type' in prop
+            ? prop.type
+            : prop.get().constructor.name
+
+        // get make method of type
+        let methodName = '_make' + type[0].toUpperCase() + type.substr(1)
+
+        // check method exist
+        if (this[methodName] === undefined) {
+            throw new Error(`Component type "${type}" not supported.`)
+        }
+        return this[methodName]()
     }
 
     _makeLabel() {

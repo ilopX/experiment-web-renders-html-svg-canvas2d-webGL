@@ -13,37 +13,42 @@ let ui = {
     btnPlay: document.getElementById('btnPlay'),
     frameInfo: document.getElementById('frameInfo'),
     animationProperties: document.getElementById('animationProperties'),
-    frameInfo: new TableValues(document.getElementById('frameInfo'))
+    frameInfo: new TableValues(document.getElementById('frameInfo'), [
+        'render',
+        'idle',
+        'fps',
+        'multiRate'
+    ])
 }
 
 let controller = new Controller(ui.container, config)
 
 controller.onReady(() => {
-    // fill select renders
+    // fill renders select
     for (const [name] of controller.renders) {
         let opt = document.createElement('option')
         opt.innerText = name
-        renderType.appendChild(opt)   
+        renderType.appendChild(opt)
     }
-    // fill select animation algorithm
+    // fill animation algorithm select
     for (const [name] of controller.animations) {
         let opt = document.createElement('option')
         opt.innerText = name
-        animationType.appendChild(opt)    
+        animationType.appendChild(opt)
     }
 
-    ui.frameInfo.initNames('renderTime', 'idleTime', 'fps', 'multiRate')
+    ui.animationType.value = config.ui.animation
+    ui.renderType.value = config.ui.render
+
     controller.setRender(ui.renderType.value)
     controller.createObjects(ui.length.value)
     controller.setAnimationAlgorithm(config.ui.animation)
-    ui.animationType.value = config.ui.animation
     controller.setRender(config.ui.render)
-    ui.renderType.value = config.ui.render
     controller.play()
 })
 
 // controller event
-controller.onPlay((start) => {
+controller.onStartPause((start) => {
     btnPlay.innerText = start
         ? 'Pause'
         : 'Play'

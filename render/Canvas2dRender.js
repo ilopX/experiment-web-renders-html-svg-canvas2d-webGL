@@ -15,11 +15,11 @@ export default class Canvas2dRender extends RenderInterface {
         ctx.imageSmoothingEnabled = false;
         this.objects.forEach(obj => {
             ctx.fillStyle = obj.color
-            ctx.fillRect(obj.x, 
-                    obj.y, 
-                    obj.width, 
-                    obj.height)        
-        })       
+            ctx.fillRect(obj.x,
+                obj.y,
+                obj.width,
+                obj.height)
+        })
     }
 
     dispose() {

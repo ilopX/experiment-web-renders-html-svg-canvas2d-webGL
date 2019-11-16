@@ -1,4 +1,4 @@
-import AlgorithmAbstract from './AlgorithmAbstract.js'
+import AlgorithmAbstract from './AnimationInterface.js'
 import ObjectData from '../lib/ObjectData.js'
 
 export default class SnowAlgorithm extends AlgorithmAbstract {
@@ -6,23 +6,23 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
         super(objectData, container)
         this.objects.forEach((obj) => {
             obj.SnowAlgorithm = {
-                ySpeed: obj.width*obj.height / 200,
-                xRange: Math.random()*0.2,
-                xSpeed: Math.random()*0.05
+                ySpeed: obj.width * obj.height / 200,
+                xRange: Math.random() * 0.2,
+                xSpeed: Math.random() * 0.05
             }
-        }) 
+        })
         this._ySpeed = 32
         this._xSpeed = 3
         this._xRange = 5
         this._frameIndex = 0
-    } 
+    }
     animate(rate) {
         this._frameIndex += rate
         this.objects.forEach((obj) => {
-            let {ySpeed, xRange, xSpeed} = obj.SnowAlgorithm
+            let { ySpeed, xRange, xSpeed } = obj.SnowAlgorithm
 
             obj.y += ySpeed * this._ySpeed * rate
-            if (obj.y > this.container.height+obj.height ) {
+            if (obj.y > this.container.height + obj.height) {
                 obj.y = -obj.height
             }
             xSpeed = xSpeed * this._xSpeed * 0.1
@@ -38,17 +38,17 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
             properties: [
                 {
                     name: 'y speed',
-                    set:  (size) => this._ySpeed = size,
+                    set: (size) => this._ySpeed = size,
                     get: () => this._ySpeed
                 },
                 {
                     name: 'x speed',
-                    set:  (size) => this._xSpeed = size,
+                    set: (size) => this._xSpeed = size,
                     get: () => this._xSpeed
                 },
                 {
                     name: 'x range',
-                    set:  (size) => this._xRange = size,
+                    set: (size) => this._xRange = size,
                     get: () => this._xRange
                 }
             ]
