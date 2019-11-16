@@ -16,7 +16,8 @@ let ui = {
         'render',
         'idle',
         'fps',
-        'multiRate'
+        'multiRate',
+        'objects'
     ])
 }
 
@@ -54,6 +55,7 @@ controller.onStartPause((start) => {
 })
 
 controller.onFpsUpdate((frameInfo) => {
+    frameInfo.objects = controller.objectsLen
     ui.frameInfo.setValues(frameInfo)
 })
 

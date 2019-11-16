@@ -59,6 +59,10 @@ export default class Controller {
         this._processor.isStart = !this._processor.isStart
     }
 
+    get objectsLen() {
+        return this._objectData.get.length
+    }
+
     get renders() {
         return Object.entries(Renders.listOfRenders)
     }
