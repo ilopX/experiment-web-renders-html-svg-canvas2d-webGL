@@ -1,7 +1,6 @@
 import Controller from './Controller.js'
 import PropertyUiComponent from './PropertyUiComponent.js'
 import TableValues from './TableValues.js'
-import Storage from '../lib/Storage.js'
 import config from '../config.js'
 
 let ui = {
@@ -60,17 +59,8 @@ controller.onFpsUpdate((frameInfo) => {
 
 controller.onAnimationChange((animation) => {
     // create ui elemetns for animation properties
-    ui.animationProperties.innerHTML = ''
-    let { id, isSaveAll } = animation.properties
-    let storage = new Storage(id, isSaveAll)
-    animation.properties.properties.forEach((prop) => {
-        let component = new PropertyUiComponent(prop, storage)
-        let div = document.createElement('div')
-        component.elements.forEach((elem) => {
-            div.appendChild(elem)
-        })
-        ui.animationProperties.appendChild(div)
-    })
+    PropertyUiComponent.connect(ui.animationProperties,
+        animation.properties)
 })
 
 // form actions

@@ -1,5 +1,6 @@
-export default class PropertyUiComponent {
+import Storage from '../lib/Storage.js'
 
+export default class PropertyUiComponent {
     constructor(prop, storage) {
         this._name = prop.name
         this._prop = prop
@@ -8,6 +9,24 @@ export default class PropertyUiComponent {
         this._createComponent()
     }
 
+    static connect(parentElement, properties, createCallback) {
+        parentElement.innerHTML = ''
+        let { id, isSaveAll } = properties
+        let storage = new Storage(id, isSaveAll)
+        if (createCallback === undefined) {
+            createCallback = (component) => {
+                let div = document.createElement('div')
+                component.elements.forEach((elem) => {
+                    div.appendChild(elem)
+                })
+                parentElement.appendChild(div)
+            }
+        }
+        properties.properties.forEach((prop) => {
+            let component = new PropertyUiComponent(prop, storage)
+            createCallback(component)
+        })
+    }
     get elements() {
         return this._elements
     }
