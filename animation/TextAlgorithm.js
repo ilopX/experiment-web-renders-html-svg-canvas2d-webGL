@@ -5,11 +5,15 @@ export default class TextAlgorithm extends AlgorithmAbstract {
         super(objectData, container)
         this._textGeometry = new TextGeometry('Hello world', 80, 'Arial')
         this._showDebug = true
+        this._onPointLenUpdate = null
         this._newAppointment()
     }
 
     _newAppointment() {
         let points = this._textGeometry.points
+
+        if (this._onPointLenUpdate)
+            this._onPointLenUpdate(points.length)
         this._moveToCenter(points)
         this._shuffle(points)
         if (this._showDebug) {
@@ -110,12 +114,20 @@ export default class TextAlgorithm extends AlgorithmAbstract {
                     get: () => this._textGeometry.sensetive
                 },
                 {
-                    name: 'show debug',
+                    name: 'debug',
                     set: (val) => {
                         this._showDebug = val
                         this._createDebug(this._textGeometry.points)
                     },
                     get: () => this._showDebug
+                },
+                {
+                    type: 'StringInfo',
+                    name: 'pointsLen',
+                    get: () => this._textGeometry.points.length,
+                    onUpdate: (callback) => {
+                        this._onPointLenUpdate = callback
+                    }
                 }
 
             ]
