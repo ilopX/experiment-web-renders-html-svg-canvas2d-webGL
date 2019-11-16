@@ -34,7 +34,7 @@ export default class Controller {
             .create(this._objectData, this._container)
     }
 
-    setAnimationAlgorithm(name) {
+    setAnimation(name) {
         if (this._animation) {
             this._animation.dispose()
         }

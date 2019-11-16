@@ -42,7 +42,7 @@ controller.onReady(() => {
 
     controller.setRender(ui.renderType.value)
     controller.createObjects(ui.length.value)
-    controller.setAnimationAlgorithm(config.ui.animation)
+    controller.setAnimation(config.ui.animation)
     controller.setRender(config.ui.render)
     controller.play()
 })
@@ -68,7 +68,7 @@ controller.onAnimationChange((animation) => {
 // form actions
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
-    controller.setAnimationAlgorithm(ui.animationType.value)
+    controller.setAnimation(ui.animationType.value)
     controller.setRender(ui.renderType.value)
     controller.rendering()
 }
@@ -79,7 +79,7 @@ ui.renderType.onchange = () => {
 }
 
 ui.animationType.onchange = () => {
-    controller.setAnimationAlgorithm(ui.animationType.value)
+    controller.setAnimation(ui.animationType.value)
 }
 
 ui.btnPlay.onclick = () => {
