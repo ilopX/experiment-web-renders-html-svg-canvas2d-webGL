@@ -6,9 +6,10 @@ export default class PropertyUiComponent {
         this._storage = storage
         this._elements = []
         this._elements.push(this._makeLabel())
-        let methodName = typeof prop.get()
+        let methodName = 'type' in prop 
+            ? prop.type
+            : prop.get().constructor.name
         methodName = '_make' + methodName[0].toUpperCase() + methodName.substr(1)
-
         if (this[methodName]) {
             this._elements.push(this[methodName]())
         } else {
@@ -44,6 +45,14 @@ export default class PropertyUiComponent {
             this._storage.save(this._prop, this._storage)
         }
         return input
+    }
+
+    _makeStringInfo() {
+        let label = document.createElement('label')
+        label.style.paddingLeft = '5px'
+        label.innerText = this._prop.get()
+        this._prop.onUpdate((val) => label.innerText = val)
+        return label
     }
 
     _createInput(type) {
