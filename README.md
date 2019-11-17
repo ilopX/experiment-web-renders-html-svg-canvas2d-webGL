@@ -28,9 +28,10 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 				RenderInerface -> Renders.js
 				Animatrion.js, Renders.js -> core
 	3. - [ ] Initialization renders and animations from **config.js:**
-			```javascript
-		animations: ['Bounce', 'Snow', 'Random', 'Text']
-		renders: ['HTML', 'Canvas2d', 'SVG']```
+		
+		```animations: ['Bounce', 'Snow', 'Random', 'Text']```
+		
+		```renders: ['HTML', 'Canvas2d', 'SVG']```
 - [ ] New feature in **ObjectData**:
 	- [ ] Rename to a more suitable name 
 	- [ ] The ability to create objects in the different visual path
