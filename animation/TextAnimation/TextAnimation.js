@@ -1,20 +1,21 @@
 import AnimationInterface from '../AnimationInterface.js'
 import TextGeometry from './TextGeometry.js'
+import Event from '../../lib/Event.js'
 
 export default class TextAlgorithm extends AnimationInterface {
     constructor(objectData, container) {
         super(objectData, container)
         this._textGeometry = new TextGeometry('Hello world', 80, 'Arial')
         this._showDebug = true
-        this._onPointLenUpdate = null
+        this._onPointLenUpdateEvent = null
         this._newAppointment()
     }
 
     _newAppointment() {
         let points = this._textGeometry.points
 
-        if (this._onPointLenUpdate)
-            this._onPointLenUpdate(points.length)
+        if (this._onPointLenUpdateEvent)
+            this._onPointLenUpdateEvent(points.length)
         this._moveToCenter(points)
         this._shuffle(points)
         if (this._showDebug) {
@@ -80,16 +81,6 @@ export default class TextAlgorithm extends AnimationInterface {
             id: 'TextAlgorithm',
             isSaveAll: true,
             properties: [
-                // {
-                //     name: 'x speed',
-                //     set:  (val) => this._xSpeed = val,
-                //     get: () => this._xSpeed
-                // },
-                // {
-                //     name: 'y speed',
-                //     set:  (val) => this._ySpeed = val,
-                //     get: () => this._ySpeed
-                // }
                 {
                     name: 'fontSize',
                     set: (val) => {
@@ -127,7 +118,7 @@ export default class TextAlgorithm extends AnimationInterface {
                     name: 'pointsLen',
                     get: () => this._textGeometry.points.length,
                     onUpdate: (callback) => {
-                        this._onPointLenUpdate = callback
+                        this._onPointLenUpdateEvent = Event.check(callback)
                     }
                 }
 

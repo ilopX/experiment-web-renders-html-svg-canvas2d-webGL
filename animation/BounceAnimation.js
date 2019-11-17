@@ -13,12 +13,9 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
         })
         this._ySpeed = 0
         this._xSpeed = 0
-
-        this._frameIndex = 0
     }
 
     animate(rate) {
-
         this.objects.forEach((obj) => {
             let { xSpeed, ySpeed,
                 xDirection, yDirection } = obj.BounceAlgorithm

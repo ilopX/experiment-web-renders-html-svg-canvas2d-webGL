@@ -4,31 +4,29 @@ import ObjectData from '../lib/ObjectData.js'
 export default class SnowAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {
         super(objectData, container)
-        this.objects.forEach((obj) => {
-            obj.SnowAlgorithm = {
-                ySpeed: obj.width * obj.height / 200,
-                xRange: Math.random() * 0.2,
-                xSpeed: Math.random() * 0.05
-            }
-        })
-        this._ySpeed = 32
-        this._xSpeed = 3
-        this._xRange = 5
+        this._initObjects()
+        this._global = {
+            ySpeed: 32,
+            xSpeed: 3,
+            xRange: 5
+        }
         this._frameIndex = 0
     }
+
     animate(rate) {
         this._frameIndex += rate
         this.objects.forEach((obj) => {
             let { ySpeed, xRange, xSpeed } = obj.SnowAlgorithm
 
-            obj.y += ySpeed * this._ySpeed * rate
+            obj.y += ySpeed * this._global.ySpeed * rate
             if (obj.y > this.container.height + obj.height) {
                 obj.y = -obj.height
             }
-            xSpeed = xSpeed * this._xSpeed * 0.1
-            xRange *= this._xRange * rate
+            xSpeed = xSpeed * this._global.xSpeed * 0.1
+            xRange *= this._global.xRange * rate
             obj.x += Math.cos(this._frameIndex * xSpeed) * xRange
         })
+
     }
 
     get properties() {
@@ -38,18 +36,18 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
             properties: [
                 {
                     name: 'y speed',
-                    set: (size) => this._ySpeed = size,
-                    get: () => this._ySpeed
-                },
-                {
-                    name: 'x speed',
-                    set: (size) => this._xSpeed = size,
-                    get: () => this._xSpeed
+                    set: (size) => this._global.ySpeed = size,
+                    get: () => this._global.ySpeed
                 },
                 {
                     name: 'x range',
-                    set: (size) => this._xRange = size,
-                    get: () => this._xRange
+                    set: (size) => this._global.xRange = size,
+                    get: () => this._global.xRange
+                },
+                {
+                    name: 'x speed',
+                    set: (size) => this._global.xSpeed = size,
+                    get: () => this._global.xSpeed
                 }
             ]
         }
@@ -58,6 +56,16 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
     dispose() {
         this.objects.forEach(obj => {
             delete obj.SnowAlgorithm
+        })
+    }
+
+    _initObjects() {
+        this.objects.forEach((obj) => {
+            obj.SnowAlgorithm = {
+                ySpeed: obj.width * obj.height / 200,
+                xRange: Math.random() * 0.4 - 0.2,
+                xSpeed: Math.random() * 0.1 - 0.05
+            }
         })
     }
 } 
