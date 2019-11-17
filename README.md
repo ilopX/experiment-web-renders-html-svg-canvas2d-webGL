@@ -11,3 +11,31 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 ## TODO:
 - [ ] WebGL render
 - [x] Fix play/pause - zero frame rate multiplier
+- [ ] Finish **TextAnimation** class
+- [ ] **Visual Debugger** for drawing animation information:
+	1. - [ ] Design a visual debugger interface 
+	2. - [ ] Implementation VisualDebugger interface in
+		- [ ] SnowDebuger
+		- [ ] RandomDebuger
+		- [ ] BounceDebuger
+		- [ ] TextDebuger
+	3. - [ ] Add custom ui values for \*Debugger classes
+- [ ] class **App** which will initialize ui & controller
+- [ ] Kernel design:
+	1. - [ ] Ren lib -> **core**
+	2. - [ ] Relocation: 
+				AnimationInterface -> Animatrion.js,
+				RenderInerface -> Renders.js
+				Animatrion.js, Renders.js -> core
+	3. - [ ] Initialization renders and animations from **config.js:**
+			```javascript
+		animations: ['Bounce', 'Snow', 'Random', 'Text']
+		renders: ['HTML', 'Canvas2d', 'SVG']```
+- [ ] New feature in **ObjectData**:
+	- [ ] Rename to a more suitable name 
+	- [ ] The ability to create objects in the different visual path
+        - [ ] Rand
+		- [ ] Spiral
+		- [ ] Grid
+	- [ ] Implementation new features in ui
+- [ ] Update class diagram
