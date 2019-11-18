@@ -1,4 +1,12 @@
 import Storage from '../lib/Storage.js'
+import {Properties} from './Properties.js'
+
+class IPropertiesable {
+    /** 
+     * @returns {Properties} 
+     */
+    get properties(){}
+}
 
 export default class PropertyUiComponent {
     constructor(prop, storage) {
@@ -9,9 +17,14 @@ export default class PropertyUiComponent {
         this._createComponent()
     }
 
-    static connect(parentElement, properties, createCallback) {
+    /**
+     * @param {HTMLElement} parentElement 
+     * @param {IPropertiesable} propertiesable 
+     * @param {Funtion} [createCallback] 
+     */
+    static connect(parentElement, propertiesable, createCallback) {
         parentElement.innerHTML = ''
-        let { id, isSaveAll } = properties
+        let { id, isSaveAll } = propertiesable.properties
         let storage = new Storage(id, isSaveAll)
         if (createCallback === undefined) {
             createCallback = (component) => {
@@ -22,7 +35,7 @@ export default class PropertyUiComponent {
                 parentElement.appendChild(div)
             }
         }
-        properties.properties.forEach((prop) => {
+        propertiesable.properties.properties.forEach((prop) => {
             let component = new PropertyUiComponent(prop, storage)
             createCallback(component)
         })

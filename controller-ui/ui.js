@@ -18,12 +18,15 @@ let ui = {
         'fps',
         'multiRate',
         'objects'
-    ])
+    ]),
+    controllerProperties: document.getElementById('controllerProperties')
 }
 
 let controller = new Controller(ui.container, config)
 
 controller.onReady(() => {
+    PropertyUiComponent.connect(ui.controllerProperties, controller)
+
     // fill renders select
     for (const [name] of controller.renders) {
         let opt = document.createElement('option')
@@ -61,8 +64,7 @@ controller.onFpsUpdate((frameInfo) => {
 
 controller.onAnimationChange((animation) => {
     // create ui elemetns for animation properties
-    PropertyUiComponent.connect(ui.animationProperties,
-        animation.properties)
+    PropertyUiComponent.connect(ui.animationProperties, animation)
 })
 
 // form actions

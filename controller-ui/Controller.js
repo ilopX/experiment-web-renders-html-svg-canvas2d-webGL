@@ -4,6 +4,7 @@ import Animations from '../animation/Animations.js'
 import Processor from '../lib/Processor.js'
 import Containerable from '../lib/Containerable.js'
 import Event from '../lib/Event.js'
+import VisualDebugger from './../lib/VisualDebugger.js'
 
 export default class Controller {
     constructor(container, config) {
@@ -85,5 +86,26 @@ export default class Controller {
 
     onReady(callback) {
         this._onReadyEvent = Event.check(callback)
+    }
+
+    get properties() {
+        return {
+            id: 'Controller',
+            properties: [
+                {
+                    name: 'debug',
+                    set: (isCheked) => {
+                        if (isCheked && this._debug == null) {
+                            this._debug = new VisualDebugger()
+                        } else {
+                            // this._debug.dispose()
+                            this._debug == null
+                        }
+                    },
+                    get: () => this._debug !== null
+                }
+            ]
+        }
+
     }
 }

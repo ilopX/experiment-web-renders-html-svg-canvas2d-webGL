@@ -10,5 +10,8 @@ export default {
     ui: {
         render: 'Canvas 2d Render',
         animation: 'Text'
+    },
+    visualDebugger: {
+        visible: true
     }
 }
