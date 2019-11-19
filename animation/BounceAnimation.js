@@ -1,6 +1,12 @@
 import AlgorithmAbstract from './AnimationInterface.js'
+import ObjectData from '../lib/ObjectData.js'
+import Containerable from '../lib/Containerable.js'
 
 export default class BounceAlgorithm extends AlgorithmAbstract {
+    /** 
+     * @param {ObjectData}  objectData
+     * @param {Containerable} container
+    */
     constructor(objectData, container) {
         super(objectData, container)
         this.objects.forEach((obj) => {
@@ -14,7 +20,8 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
         this._ySpeed = 0
         this._xSpeed = 0
     }
-
+    
+    /** @param {Number} rate */
     animate(rate) {
         this.objects.forEach((obj) => {
             let { xSpeed, ySpeed,

@@ -27,6 +27,7 @@ export default class Controller {
         })
     }
 
+    /** @param {String} name */
     setRender(name) {
         if (this._render) {
             this._render.dispose()
@@ -64,10 +65,12 @@ export default class Controller {
         return this._objectData.get.length
     }
 
+    /** @returns {Array<String>} */
     get renders() {
         return Object.entries(Renders.listOfRenders)
     }
 
+    /** @returns {Array<String>} */
     get animations() {
         return Object.entries(Animations.listOfAnimations)
     }
