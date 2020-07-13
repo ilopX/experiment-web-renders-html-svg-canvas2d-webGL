@@ -5,8 +5,8 @@ import Event from '../../lib/Event.js'
 export default class TextAlgorithm extends AnimationInterface {
     constructor(objectData, container) {
         super(objectData, container)
-        this._textGeometry = new TextGeometry('Hello world', 80, 'Arial')
-        this._showDebug = true
+        this._textGeometry = new TextGeometry('ilopXgroup', 80, 'Arial')
+        this._showDebug = false
         this._onPointLenUpdateEvent = null
         this._newAppointment()
     }
@@ -23,7 +23,7 @@ export default class TextAlgorithm extends AnimationInterface {
         }
         let i = 0;
         this.objects.forEach((obj) => {
-            let { x, y } = points[i]
+            let {x, y} = points[i]
             obj.TextAlgorithm = {
                 xTarget: x,
                 yTarget: y
@@ -35,7 +35,7 @@ export default class TextAlgorithm extends AnimationInterface {
     }
 
     _shuffle(points) {
-        Math.see
+
         for (let i = points.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [points[i], points[j]] = [points[j], points[i]];
@@ -73,7 +73,15 @@ export default class TextAlgorithm extends AnimationInterface {
     }
 
     animate(rate) {
+        this.objects.forEach((obj, index) => {
+            if (obj.DebugTextGeometry) {
+                return
+            }
+            let {x,y} = this._textGeometry.points[index]
 
+            obj.x += (x - obj.x) / 100 * rate
+            obj.y += (y - obj.y) / 100 * rate
+        })
     }
 
     get properties() {
