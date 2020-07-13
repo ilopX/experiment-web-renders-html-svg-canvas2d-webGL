@@ -4,6 +4,7 @@ export default class TextGeometry {
         this._fontSize = fontSize
         this._fontName = fontName
         this._sensetive = 0
+        this._points = []
         this._update()
     }
 

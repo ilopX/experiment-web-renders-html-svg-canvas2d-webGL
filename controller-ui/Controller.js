@@ -7,6 +7,7 @@ import Event from '../lib/Event.js'
 import VisualDebugger from './../lib/VisualDebugger.js'
 
 export default class Controller {
+
     constructor(container, config) {
         this._config = config
         this._container = new Containerable(container)

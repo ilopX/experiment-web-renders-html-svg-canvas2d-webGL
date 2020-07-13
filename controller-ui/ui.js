@@ -3,6 +3,7 @@ import PropertyUiComponent from './PropertyUiComponent.js'
 import TableValues from './TableValues.js'
 import config from '../config.js'
 
+// ui init
 let ui = {
     length: document.getElementById('length'),
     container: document.getElementById('container'),
@@ -10,20 +11,22 @@ let ui = {
     animationType: document.getElementById('animationType'),
     btnCreate: document.getElementById('btnCreate'),
     btnPlay: document.getElementById('btnPlay'),
-    frameInfo: document.getElementById('frameInfo'),
     animationProperties: document.getElementById('animationProperties'),
-    frameInfo: new TableValues(document.getElementById('frameInfo'), [
-        'render',
-        'idle',
-        'fps',
-        'multiRate',
-        'objects'
-    ]),
+    frameInfo: new TableValues(document.getElementById('frameInfo'),
+        [
+            'render',
+            'idle',
+            'fps',
+            'multiRate',
+            'objects'
+        ]),
     controllerProperties: document.getElementById('controllerProperties')
 }
 
 let controller = new Controller(ui.container, config)
 
+
+// onReady init
 controller.onReady(() => {
     PropertyUiComponent.connect(ui.controllerProperties, controller)
 
