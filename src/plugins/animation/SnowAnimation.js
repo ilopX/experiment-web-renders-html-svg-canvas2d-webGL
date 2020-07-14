@@ -1,5 +1,5 @@
-import AlgorithmAbstract from './AnimationInterface.js'
-import ObjectData from '../lib/ObjectData.js'
+import AlgorithmAbstract from '../../core/plugins/AnimationInterface.js'
+import ObjectData from '../../core/ObjectData.js'
 
 export default class SnowAlgorithm extends AlgorithmAbstract {
     constructor(objectData, container) {

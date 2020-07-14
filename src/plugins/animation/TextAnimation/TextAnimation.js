@@ -1,6 +1,6 @@
-import AnimationInterface from '../AnimationInterface.js'
+import AnimationInterface from '../../../core/plugins/AnimationInterface.js'
 import TextGeometry from './TextGeometry.js'
-import Event from '../../lib/Event.js'
+import Event from '../../../core/Event.js'
 
 export default class TextAlgorithm extends AnimationInterface {
     constructor(objectData, container) {
@@ -79,8 +79,8 @@ export default class TextAlgorithm extends AnimationInterface {
             }
             let {x,y} = this._textGeometry.points[index]
 
-            obj.x += (x - obj.x) / 100 * rate
-            obj.y += (y - obj.y) / 100 * rate
+            obj.x += (x - obj.x) / 25 * rate
+            obj.y += (y - obj.y) / 25 * rate
         })
     }
 

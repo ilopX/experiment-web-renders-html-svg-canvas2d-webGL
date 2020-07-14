@@ -1,6 +1,6 @@
-import AlgorithmAbstract from './AnimationInterface.js'
-import ObjectData from '../lib/ObjectData.js'
-import Containerable from '../lib/Containerable.js'
+import AlgorithmAbstract from '../../core/plugins/AnimationInterface.js'
+import ObjectData from '../../core/ObjectData.js'
+import Containerable from '../../core/Containerable.js'
 
 export default class BounceAlgorithm extends AlgorithmAbstract {
     /** 

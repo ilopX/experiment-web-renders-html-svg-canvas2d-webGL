@@ -20,13 +20,13 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 		- [ ] BounceDebuger
 		- [ ] TextDebuger
 	3. - [ ] Add custom ui values for \*Debugger classes
-- [ ] class **App** which will initialize ui & controller
+- [x] class **App** (main.js) which will initialize ui & controller
 - [ ] Kernel design:
-	1. - [ ] Ren lib -> **core**
-	2. - [ ] Relocation: 
-				AnimationInterface -> Animatrion.js,
-				RenderInerface -> Renders.js
-				Animatrion.js, Renders.js -> core
+	1. - [x] Ren lib -> **core**
+	2. - [x] Relocation: 
+				AnimationInterface -> Animation.js,
+				RenderInterface -> Renders.js
+				Animation.js, Renders.js -> core
 	3. - [ ] Initialization renders and animations from **config.js:**
 		
 		```animations: ['Bounce', 'Snow', 'Random', 'Text']```

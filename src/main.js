@@ -1,30 +1,9 @@
-import Controller from './Controller.js'
-import PropertyUiComponent from './PropertyUiComponent.js'
-import TableValues from './TableValues.js'
-import config from '../config.js'
-
-// ui init
-let ui = {
-    length: document.getElementById('length'),
-    container: document.getElementById('container'),
-    renderType: document.getElementById('renderType'),
-    animationType: document.getElementById('animationType'),
-    btnCreate: document.getElementById('btnCreate'),
-    btnPlay: document.getElementById('btnPlay'),
-    animationProperties: document.getElementById('animationProperties'),
-    frameInfo: new TableValues(document.getElementById('frameInfo'),
-        [
-            'render',
-            'idle',
-            'fps',
-            'multiRate',
-            'objects'
-        ]),
-    controllerProperties: document.getElementById('controllerProperties')
-}
+import Controller from './controller/Controller.js'
+import PropertyUiComponent from './core/ui/PropertyUiComponent.js'
+import config from './config.js'
+import ui from "./ui/ui.js";
 
 let controller = new Controller(ui.container, config)
-
 
 // onReady init
 controller.onReady(() => {
@@ -34,13 +13,13 @@ controller.onReady(() => {
     for (const [name] of controller.renders) {
         let opt = document.createElement('option')
         opt.innerText = name
-        renderType.appendChild(opt)
+        ui.renderType.appendChild(opt)
     }
     // fill animation algorithm select
     for (const [name] of controller.animations) {
         let opt = document.createElement('option')
         opt.innerText = name
-        animationType.appendChild(opt)
+        ui.animationType.appendChild(opt)
     }
 
     ui.animationType.value = config.ui.animation
@@ -55,7 +34,7 @@ controller.onReady(() => {
 
 // controller event
 controller.onStartPause((start) => {
-    btnPlay.innerText = start
+    ui.btnPlay.innerText = start
         ? 'Pause'
         : 'Play'
 })
@@ -90,4 +69,5 @@ ui.animationType.onchange = () => {
 ui.btnPlay.onclick = () => {
     controller.play()
 }
+
 

@@ -1,10 +1,10 @@
 import AlgorithInreface from './AnimationInterface.js'
-import RandomAnimation from './RandomAnimation.js'
-import SnowAnimation from './SnowAnimation.js'
-import BounceAnimation from './BounceAnimation.js'
-import TextAnimation from './TextAnimation/TextAnimation.js'
+import RandomAnimation from '../../plugins/animation/RandomAnimation.js'
+import SnowAnimation from '../../plugins/animation/SnowAnimation.js'
+import BounceAnimation from '../../plugins/animation/BounceAnimation.js'
+import TextAnimation from '../../plugins/animation/TextAnimation/TextAnimation.js'
 
-import { AnimationNotFound } from '../lib/errors.js'
+import { AnimationNotFound } from '../errors.js'
 
 export default class Animations {
     static listOfAnimations = {

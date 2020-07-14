@@ -25,5 +25,4 @@ export class Properties {
      * @returns {Array<Property>}
      */
     get properties() {}
-
 }

@@ -1,4 +1,4 @@
-import Processor from '../lib/Processor.js'
+import Processor from '../src/core/Processor.js'
 
 const equal = chai.assert
 

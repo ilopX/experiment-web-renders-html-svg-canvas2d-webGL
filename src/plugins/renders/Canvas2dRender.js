@@ -1,4 +1,4 @@
-import RenderInterface from './RenderInterface.js'
+import RenderInterface from '../../core/plugins/RenderInterface.js'
 
 export default class Canvas2dRender extends RenderInterface {
     init() {

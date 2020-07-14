@@ -1,8 +1,8 @@
 import RenderInterface from './RenderInterface.js'
-import HTMLRender from './HTMLRender.js'
-import SVGRender from './SVGRender.js'
-import Canvas2dRender from './Canvas2dRender.js'
-import { RenderNotFound } from '../lib/errors.js'
+import HTMLRender from '../../plugins/renders/HTMLRender.js'
+import SVGRender from '../../plugins/renders/SVGRender.js'
+import Canvas2dRender from '../../plugins/renders/Canvas2dRender.js'
+import { RenderNotFound } from '../errors.js'
 
 export default class Renders {
     static listOfRenders = {

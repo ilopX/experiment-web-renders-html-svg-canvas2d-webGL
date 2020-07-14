@@ -1,4 +1,4 @@
-import Objetive from './../lib/Objetive.js'
+import Objetive from '../Objetive.js'
 
 export default class RenderInterface extends Objetive {
     init() {

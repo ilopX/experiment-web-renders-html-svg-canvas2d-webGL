@@ -1,14 +1,16 @@
-import ObjectData from '../lib/ObjectData.js'
-import Renders from '../render/Renders.js'
-import Animations from '../animation/Animations.js'
-import Processor from '../lib/Processor.js'
-import Containerable from '../lib/Containerable.js'
-import Event from '../lib/Event.js'
-import VisualDebugger from './../lib/VisualDebugger.js'
+import ObjectData from '../core/ObjectData.js'
+import Renders from '../core/plugins/Renders.js'
+import Animations from '../core/plugins/Animations.js'
+import Processor from '../core/Processor.js'
+import Containerable from '../core/Containerable.js'
+import Event from '../core/Event.js'
+import VisualDebugger from '../core/VisualDebugger.js'
+import {IPropertiesable} from '../core/ui/PropertyUiComponent.js'
 
-export default class Controller {
+export default class Controller extends IPropertiesable{
 
     constructor(container, config) {
+        super()
         this._config = config
         this._container = new Containerable(container)
         this._objectData = new ObjectData(this._container)

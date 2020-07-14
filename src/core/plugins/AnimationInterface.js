@@ -1,5 +1,5 @@
-import Objective from '../lib/Objetive.js'
-import { NotImplError } from '../lib/errors.js'
+import Objective from '../Objetive.js'
+import { NotImplError } from '../errors.js'
 
 export default class AnimationInterface extends Objective {
     animate(rate) {

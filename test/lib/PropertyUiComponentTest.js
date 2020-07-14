@@ -1,4 +1,4 @@
-import PropertyUiComponent from './../../lib/PropertyUiComponent.js'
+import PropertyUiComponent from '../../src/core/PropertyUiComponent.js'
 
 const equal = chai.assert
 

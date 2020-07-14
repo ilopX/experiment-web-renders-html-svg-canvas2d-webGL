@@ -1,7 +1,7 @@
-import Storage from '../lib/Storage.js'
+import Storage from '../Storage.js'
 import {Properties} from './Properties.js'
 
-class IPropertiesable {
+export class IPropertiesable {
     /** 
      * @returns {Properties} 
      */
