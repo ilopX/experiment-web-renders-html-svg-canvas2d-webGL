@@ -26,8 +26,32 @@ body {
 
 #frameInfo {
     position: absolute;
-    color: white;
     padding: 10px;
     top: 0;
     font-size: 12px;
+}
+
+.objectsLen {
+    float: left;
+}
+
+.renderType {
+    float: right;
+}
+
+.animationType {
+    clear: both;
+    display: table;
+    padding: 15px 10px 5px;
+    margin: 61px auto;
+    background-color: gainsboro;
+}
+
+#animationProperties > div {
+    margin: 10px;
+}
+
+#animationProperties > div > label {
+    display: inline-block;
+    width: 100px;
 }

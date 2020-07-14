@@ -40,6 +40,6 @@ This experiment should show differences in rendering speed between HTML, SVG, Ca
 		- [ ] Grid
 	- [ ] Implementation new features in ui
 - [ ] Update class diagram
-- [ ] Stylize ui
+- [x] Stylize ui
 
 
