@@ -67,12 +67,10 @@ export default class Controller extends IPropertiesable{
         return this._objectData.get.length
     }
 
-    /** @returns {Array<String>} */
     get renders() {
         return Object.entries(Renders.listOfRenders)
     }
 
-    /** @returns {Array<String>} */
     get animations() {
         return Object.entries(Animations.listOfAnimations)
     }
@@ -93,18 +91,18 @@ export default class Controller extends IPropertiesable{
         return {
             id: 'Controller',
             properties: [
-                {
-                    name: 'debug',
-                    set: (isCheked) => {
-                        if (isCheked && this._debug == null) {
-                            this._debug = new VisualDebugger()
-                        } else {
-                            // this._debug.dispose()
-                            this._debug == null
-                        }
-                    },
-                    get: () => this._debug !== null
-                }
+                // {
+                //     name: 'debug',
+                //     set: (isCheked) => {
+                //         if (isCheked && this._debug == null) {
+                //             this._debug = new VisualDebugger()
+                //         } else {
+                //             // this._debug.dispose()
+                //             this._debug == null
+                //         }
+                //     },
+                //     get: () => this._debug !== null
+                // }
             ]
         }
 
