@@ -8,8 +8,8 @@ export default {
         updateInfoTime: 1000
     },
     ui: {
-        render: 'Canvas 2d Render',
-        animation: 'Text'
+        defaultRender: 'Canvas 2d Render',
+        defaultAnimation: 'Text'
     },
     visualDebugger: {
         visible: true
