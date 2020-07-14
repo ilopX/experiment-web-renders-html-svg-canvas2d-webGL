@@ -40,11 +40,19 @@ controller.onAnimationChange((animation) => {
 })
 
 // form actions
+
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
     controller.setAnimation(ui.animationType.value)
     controller.setRender(ui.renderType.value)
     controller.rendering()
+}
+
+ui.length.onkeyup = (e) => {
+    if (event.keyCode === 13) {
+        ui.btnCreate.onclick(null)
+        e.preventDefault();
+    }
 }
 
 ui.renderType.onchange = () => {
