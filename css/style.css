@@ -23,3 +23,11 @@ body {
 .form > * {
     padding-top: 20px ;
 }
+
+#frameInfo {
+    position: absolute;
+    color: white;
+    padding: 10px;
+    top: 0;
+    font-size: 12px;
+}
