@@ -55,3 +55,19 @@ body {
     display: inline-block;
     width: 100px;
 }
+
+a[href="https://github.com/ilopX/experiment-web-renders-html-svg-canvas2d-webGL"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: black;
+    width: 100px;
+    height: 40px;
+    background-image: url("../GitHub_Logo.png") ;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain;
+    font-size: 0;
+
+}
