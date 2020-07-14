@@ -17,8 +17,7 @@ export default class Controller extends IPropertiesable{
         this._render = null
         this._animation = null
         this._onAnimationChangeEvent = () => { }
-        this._onReadyEvent = () => { }
-        setTimeout(() => this._onReadyEvent(), 0)
+
         this._createProcessor()
     }
 
@@ -88,10 +87,6 @@ export default class Controller extends IPropertiesable{
 
     onAnimationChange(callback) {
         this._onAnimationChangeEvent = Event.check(callback)
-    }
-
-    onReady(callback) {
-        this._onReadyEvent = Event.check(callback)
     }
 
     get properties() {

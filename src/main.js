@@ -1,34 +1,24 @@
 import Controller from './controller/Controller.js'
 import PropertyUiComponent from './core/ui/PropertyUiComponent.js'
 import config from './config.js'
-import ui from "./ui/ui.js";
+import ui from './ui/ui.js';
+import onReady from './core/onReady.js'
 
 let controller = new Controller(ui.container, config)
 
-// onReady init
-controller.onReady(() => {
+onReady(() => {
     PropertyUiComponent.connect(ui.controllerProperties, controller)
 
-    // fill renders select
-    for (const [name] of controller.renders) {
-        let opt = document.createElement('option')
-        opt.innerText = name
-        ui.renderType.appendChild(opt)
-    }
-    // fill animation algorithm select
-    for (const [name] of controller.animations) {
-        let opt = document.createElement('option')
-        opt.innerText = name
-        ui.animationType.appendChild(opt)
-    }
+    addRenderPluginsNameToUIComboBox()
+    addAnimationPluginsNameToUIComboBox()
 
-    ui.animationType.value = config.ui.animation
-    ui.renderType.value = config.ui.render
+    ui.animationType.value = config.ui.defaultAnimation
+    ui.renderType.value = config.ui.defaultRender
 
     controller.setRender(ui.renderType.value)
     controller.createObjects(ui.length.value)
-    controller.setAnimation(config.ui.animation)
-    controller.setRender(config.ui.render)
+    controller.setAnimation(config.ui.defaultAnimation)
+    controller.setRender(config.ui.defaultRender)
     controller.play()
 })
 
@@ -70,4 +60,22 @@ ui.btnPlay.onclick = () => {
     controller.play()
 }
 
+
+function addRenderPluginsNameToUIComboBox() {
+    // fill renders select
+    for (const [name] of controller.renders) {
+        let opt = document.createElement('option')
+        opt.innerText = name
+        ui.renderType.appendChild(opt)
+    }
+}
+
+function addAnimationPluginsNameToUIComboBox() {
+    // fill animation algorithm select
+    for (const [name] of controller.animations) {
+        let opt = document.createElement('option')
+        opt.innerText = name
+        ui.animationType.appendChild(opt)
+    }
+}
 
