@@ -5,7 +5,7 @@ import Event from '../../../core/Event.js'
 export default class TextAlgorithm extends AnimationInterface {
     constructor(objectData, container) {
         super(objectData, container)
-        this._textGeometry = new TextGeometry('ilopXgroup', 80, 'Arial')
+        this._textGeometry = new TextGeometry('HTML Canvas ', 90, 'Arial')
         this._showDebug = false
         this._onPointLenUpdateEvent = null
         this._newAppointment()
