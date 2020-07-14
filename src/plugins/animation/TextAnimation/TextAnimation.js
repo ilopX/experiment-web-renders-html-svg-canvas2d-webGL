@@ -79,8 +79,10 @@ export default class TextAlgorithm extends AnimationInterface {
             }
             let {x,y} = this._textGeometry.points[index]
 
-            obj.x += (x - obj.x) / 25 * rate
-            obj.y += (y - obj.y) / 25 * rate
+            let randX = (0.5 - Math.random()) / 10;
+
+            obj.x += (x - obj.x) / 25 * rate + randX
+            obj.y += (y - obj.y) / 25 * rate + randX
         })
     }
 
