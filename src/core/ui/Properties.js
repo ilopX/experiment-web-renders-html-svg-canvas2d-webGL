@@ -7,7 +7,12 @@ export class Property {
     /** 
     * @returns {Any}
     */
-    get get() { }
+    get() { }
+
+    /** 
+     * @param {Any} value
+     */
+    set(value) { }
 }
 
 export class Properties {
