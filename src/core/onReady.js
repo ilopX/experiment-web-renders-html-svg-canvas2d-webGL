@@ -1,7 +1,6 @@
-let _onReady = () => {}
+let _onReady = () => { }
 
- let onReady = (callback) => {
-
+let onReady = (callback) => {
     _onReady = callback;
     setTimeout(_onReady, 0)
 }

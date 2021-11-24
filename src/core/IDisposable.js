@@ -1,3 +1,3 @@
-class IDisposable{
-    dispose() {}
+class IDisposable {
+    dispose() { }
 }

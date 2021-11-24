@@ -1,11 +1,11 @@
 import Storage from '../Storage.js'
-import {Properties} from './Properties.js'
+import { Properties } from './Properties.js'
 
 export class IPropertiesable {
     /** 
      * @returns {Properties} 
      */
-    get properties(){}
+    get properties() { }
 }
 
 export default class PropertyUiComponent {
