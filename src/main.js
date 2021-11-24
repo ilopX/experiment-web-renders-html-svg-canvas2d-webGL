@@ -22,9 +22,6 @@ onReady(() => {
     controller.play()
 })
 
-
-
-// controller event
 controller.onStartPause((start) => {
     ui.btnPlay.innerText = start
         ? 'Pause'
@@ -37,11 +34,8 @@ controller.onFpsUpdate((frameInfo) => {
 })
 
 controller.onAnimationChange((animation) => {
-    // create ui elemetns for animation properties
     PropertyUiComponent.connect(ui.animationProperties, animation)
 })
-
-// form actions
 
 ui.btnCreate.onclick = () => {
     controller.createObjects(ui.length.value)
@@ -70,9 +64,7 @@ ui.btnPlay.onclick = () => {
     controller.play()
 }
 
-
 function addRenderPluginsNameToUIComboBox() {
-    // fill renders select
     for (const [name] of controller.renders) {
         let opt = document.createElement('option')
         opt.innerText = name
@@ -81,7 +73,6 @@ function addRenderPluginsNameToUIComboBox() {
 }
 
 function addAnimationPluginsNameToUIComboBox() {
-    // fill animation algorithm select
     for (const [name] of controller.animations) {
         let opt = document.createElement('option')
         opt.innerText = name

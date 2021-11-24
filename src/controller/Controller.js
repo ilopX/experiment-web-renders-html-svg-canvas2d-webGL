@@ -5,10 +5,9 @@ import Processor from '../core/Processor.js'
 import Containerable from '../core/Containerable.js'
 import Event from '../core/Event.js'
 import VisualDebugger from '../core/VisualDebugger.js'
-import {IPropertiesable} from '../core/ui/PropertyUiComponent.js'
+import { IPropertiesable } from '../core/ui/PropertyUiComponent.js'
 
-export default class Controller extends IPropertiesable{
-
+export default class Controller extends IPropertiesable {
     constructor(container, config) {
         super()
         this._config = config
@@ -17,7 +16,6 @@ export default class Controller extends IPropertiesable{
         this._render = null
         this._animation = null
         this._onAnimationChangeEvent = () => { }
-
         this._createProcessor()
     }
 

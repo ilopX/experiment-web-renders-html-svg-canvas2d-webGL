@@ -1,4 +1,3 @@
-
 export default class ObjectData {
     constructor(containerable) {
         this._get = []

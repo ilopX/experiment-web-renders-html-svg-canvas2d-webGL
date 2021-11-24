@@ -6,7 +6,7 @@ export default class Containerable {
     get width() {
         return this._container.clientWidth
     }
-    
+
     /** @return {Number} */
     get height() {
         return this._container.clientHeight

@@ -2,27 +2,27 @@ export class Property {
     /** 
     * @returns {String}
     */
-    get name() {}
+    get name() { }
 
     /** 
     * @returns {Any}
     */
-    get get() {}
-} 
+    get get() { }
+}
 
 export class Properties {
     /**
      * @returns {Boolean}
      */
-    get isSaveAll() {}
+    get isSaveAll() { }
 
     /** 
     * @returns {String}
     */
-    get id() {}
+    get id() { }
 
     /**
      * @returns {Array<Property>}
      */
-    get properties() {}
+    get properties() { }
 }

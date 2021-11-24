@@ -32,7 +32,7 @@ export default class Processor {
         }
         this._onStartEvent(start)
     }
-    
+
     /**
     * @callback CycleCallback
     * @param {Number} multiRate
