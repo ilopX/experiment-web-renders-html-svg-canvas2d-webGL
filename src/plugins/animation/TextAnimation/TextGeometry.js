@@ -1,3 +1,17 @@
+// Usecase
+// let textGeopetry = new TextGeometry('ilopX', 50)
+// console.log(textGeopetry.imageData.data);
+
+// ctx.putImageData(textGeopetry.imageData, 0, 0)
+// ctx.fillStyle = 'red'
+// textGeopetry.points.forEach(val => {
+//     val.x += 2
+//     val.y += 2
+// })
+// textGeopetry.points.forEach(val => {
+//     ctx.fillRect(val.x - 1, val.y, 1, 1)
+// })
+
 export default class TextGeometry {
     constructor(text, fontSize = 24, fontName = 'Arial') {
         this._text = text
@@ -32,12 +46,10 @@ export default class TextGeometry {
         tmpCan.width = this._width
         tmpCan.height = this._fontSize
         tmpCtx.font = font
+
         // draw text 
-        // tmpCtx.fillStyle = 'black'
-        // tmpCtx.fillRect(0, 0, tmpCan.width, tmpCan.height)
         tmpCtx.fillStyle = 'black'
         tmpCtx.fillText(this._text, pleft, this._fontSize - ptop)
-        // tmpCtx.strokeRect(0, 0, this._width, fontSize)
         this._imageData = tmpCtx.getImageData(0, 0, this._width, this._fontSize)
     }
 
@@ -47,7 +59,6 @@ export default class TextGeometry {
             let bits = i / 4
             let y = Math.floor(bits / this._imageData.width)
             let x = bits - ((this._imageData.width) * y)
-            // console.log(`x: ${y}`, `y: ${x}, color:${imageData.data[i]}`);
             if (this._imageData.data[i] > this._sensetive) {
                 list.push({ x, y })
             }
@@ -90,16 +101,6 @@ export default class TextGeometry {
         }
     }
 
-    // get fontName() {
-    //     throw new NotImplError()
-
-    // }
-
-    // set fontName(name) {
-    //     throw new NotImplError()
-
-    // }
-
     get width() {
         return this._width
 
@@ -109,11 +110,6 @@ export default class TextGeometry {
         return this._fontSize
     }
 
-    // moveTo(x, y) {
-    //     throw new NotImplError()
-
-    // }
-
     get points() {
         return this._points
     }
@@ -122,15 +118,3 @@ export default class TextGeometry {
         return this._imageData
     }
 }
-// let textGeopetry = new TextGeometry('ilopX', 50)
-// console.log(textGeopetry.imageData.data);
-
-// ctx.putImageData(textGeopetry.imageData, 0, 0)
-// ctx.fillStyle = 'red'
-// textGeopetry.points.forEach(val => {
-//     val.x += 2
-//     val.y += 2
-// })
-// textGeopetry.points.forEach(val => {
-//     ctx.fillRect(val.x - 1, val.y, 1, 1)
-// })
