@@ -6,6 +6,9 @@ export default class AnimationInterface extends Objective {
         throw new NotImplError()
     }
 
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         throw new NotImplError()
     }

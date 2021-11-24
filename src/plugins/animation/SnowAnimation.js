@@ -28,7 +28,10 @@ export default class SnowAlgorithm extends AlgorithmAbstract {
         })
 
     }
-
+    
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         return {
             id: 'SnowAlgorithm',

@@ -86,6 +86,9 @@ export default class TextAlgorithm extends AnimationInterface {
         })
     }
 
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         return {
             id: 'TextAlgorithm',
