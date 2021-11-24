@@ -7,6 +7,7 @@ export default class RandomAlgorithm extends AlgorithmAbstract {
         this._xGlobalRand = 16
         this._yGlobalRand = 16
     }
+
     animate(rate) {
         const transformRate = 0.3 * rate
         this.objects.forEach((obj) => {
@@ -19,7 +20,10 @@ export default class RandomAlgorithm extends AlgorithmAbstract {
             }
         })
     }
-
+    
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         return {
             id: 'RandomAlgorithm',

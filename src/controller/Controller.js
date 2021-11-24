@@ -85,6 +85,9 @@ export default class Controller extends IPropertiesable {
         this._onAnimationChangeEvent = Event.check(callback)
     }
 
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         return {
             id: 'Controller',

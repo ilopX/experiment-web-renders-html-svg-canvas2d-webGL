@@ -20,7 +20,7 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
         this._ySpeed = 0
         this._xSpeed = 0
     }
-    
+
     /** @param {Number} rate */
     animate(rate) {
         this.objects.forEach((obj) => {
@@ -49,6 +49,9 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
         })
     }
 
+    /**
+     * @return {Properties} 
+     */
     get properties() {
         return {
             id: 'BounceAlgorithm',
@@ -74,4 +77,4 @@ export default class BounceAlgorithm extends AlgorithmAbstract {
             delete obj.BounceAlgorithm
         })
     }
-} 
+}
