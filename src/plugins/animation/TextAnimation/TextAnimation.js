@@ -23,7 +23,7 @@ export default class TextAlgorithm extends AnimationInterface {
         }
         let i = 0;
         this.objects.forEach((obj) => {
-            let {x, y} = points[i]
+            let { x, y } = points[i]
             obj.TextAlgorithm = {
                 xTarget: x,
                 yTarget: y
@@ -73,14 +73,18 @@ export default class TextAlgorithm extends AnimationInterface {
     }
 
     animate(rate) {
+        var pointIndex = 0;
         this.objects.forEach((obj, index) => {
             if (obj.DebugTextGeometry) {
                 return
             }
-            let {x,y} = this._textGeometry.points[index]
 
+            if (pointIndex >= this._textGeometry.points.length) {
+                pointIndex = 0;
+            }
+
+            let { x, y } = this._textGeometry.points[pointIndex++]
             let randX = (0.5 - Math.random()) / 10;
-
             obj.x += (x - obj.x) / 25 * rate + randX
             obj.y += (y - obj.y) / 25 * rate + randX
         })
