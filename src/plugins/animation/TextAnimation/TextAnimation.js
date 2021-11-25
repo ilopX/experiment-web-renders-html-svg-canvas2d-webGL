@@ -73,7 +73,7 @@ export default class TextAlgorithm extends AnimationInterface {
     }
 
     animate(rate) {
-        var pointIndex = 0;
+        let pointIndex = 0;
         this.objects.forEach((obj, index) => {
             if (obj.DebugTextGeometry) {
                 return
