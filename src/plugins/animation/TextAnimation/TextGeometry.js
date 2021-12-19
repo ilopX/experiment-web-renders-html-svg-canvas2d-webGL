@@ -93,10 +93,7 @@ export default class TextGeometry {
     }
 
     set sensetive(val) {
-        if (val < 0) {
-            this._sensetive = 0
-        }
-        else if (val > 255) {
+        if (val > 255) {
             throw new Error(`Sensetibe value should be 0-255. Current: ${val}`)
         } else if (val != this._sensetive) {
             this._sensetive = val
